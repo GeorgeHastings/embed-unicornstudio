@@ -46,7 +46,7 @@ import * as UnicornStudio from './path/to/unicornStudio.umd.js'
 Any values set in the UI will be overridden by values defined in the optional params. 
 
 ## Tips
-The `div` or element you attach your scene to should be empty and sized with CSS. One effective way to do this without setting hard coded values is with the `aspect-ratio` property. If your scene is 16:9, then use `aspect-ratio: 1.77`. 
+The `div` or element you attach your scene to should be empty and sized with CSS. One effective way to do this without setting hard coded values is with the `aspect-ratio` property. If your scene is 16:9, then use `aspect-ratio: 1.77`.
 
 ## Live example
 https://codepen.io/georgehastings/pen/ExGrqMJ

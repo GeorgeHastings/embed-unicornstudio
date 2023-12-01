@@ -14,7 +14,7 @@ import * as UnicornStudio from './path/to/unicornStudio.umd.js'
 
 ## Initialize your scene:
 
-###Inline
+### Inline
 Any element with `data-us-project` will get initialized by calling `UnicornStudio.init()`.
 ```html
 <div class="unicorn-embed"
@@ -30,7 +30,7 @@ Any element with `data-us-project` will get initialized by calling `UnicornStudi
   });
 </script>
 ```
-###Dynamically
+### Dynamically
 You can add a scene dynamically during or after pageload. 
 ```html
 <div class="unicorn-embed" id="unicorn"></div>

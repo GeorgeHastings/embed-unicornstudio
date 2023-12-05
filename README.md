@@ -21,6 +21,7 @@ Any element with `data-us-project` will get initialized by calling `UnicornStudi
   data-us-project="YOUR_PROJECT_EMBED_ID"
   data-us-scale="1"
   data-us-dpi="1.5"
+  data-us-disableMobile
 ></div>
 <script>
   UnicornStudio.init().then(scenes => {

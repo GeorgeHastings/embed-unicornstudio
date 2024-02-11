@@ -110,7 +110,7 @@ void main() {
   const float PI = 3.1415926;
 
   out vec4 fragColor;
-  
+
   vec3 rgb2hsv(vec3 c)
   {
       vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -172,6 +172,7 @@ vec2 liquify(vec2 st, float angle) {
 }
 
   const float TWOPI = 6.2831852;
+  const float edgeSoftness = 0.75;
   
   void main() {
     float aspectRatio = uResolution.x/uResolution.y;

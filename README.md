@@ -52,14 +52,21 @@ You can add a scene dynamically during or after pageload.
         momentum: 1.1 // scroll momentum
       }
     }
-  }).then(() => {
+  }).then(scene => {
     // Scene is ready
+    // To remove a scene, you can use:
+    // scene.destroy()
   }).catch((err) => {
     console.error(err);
   });
 </script>
 ```
 Any values set in the UI will be overridden by values defined in the optional params. 
+
+## Destroy all scenes:
+```js
+  UnicornStudio.destroy();
+```
 
 ## Live example
 https://codepen.io/georgehastings/pen/ExGrqMJ

@@ -6017,11 +6017,17 @@ class Jt {
         l.getMaskedItem() && (d += l.getMaskedItem().getPlanes().length), l.getPlanes().filter((c) => c.type === "PingPongPlane").length && d--, r = this.getRenderTargets()[t - (1 + d + h)];
       } else
         r = this.getRenderTargets()[t - (1 + h)];
-      r && s.createTexture({
-        sampler: "uBgTexture",
-        premultipliedAlpha: !0,
-        fromTexture: r.getTexture()
-      });
+      if (r) {
+        if (i.length) {
+          const d = i.filter((c) => c.type === "mouse").length;
+          r = this.getRenderTargets()[t - (1 + h - d)];
+        }
+        s.createTexture({
+          sampler: "uBgTexture",
+          premultipliedAlpha: !0,
+          fromTexture: r.getTexture()
+        });
+      }
     }
   }
   handleChildEffectPlane(e, t, s) {

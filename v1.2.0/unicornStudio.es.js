@@ -399,12 +399,12 @@ class ke {
     // callbacks passed by the Curtains class object on instantiation
     onError: u,
     onSuccess: f,
-    onContextLost: y,
-    onContextRestored: _,
+    onContextLost: m,
+    onContextRestored: x,
     onDisposed: v,
-    onSceneChange: x
+    onSceneChange: y
   }) {
-    this.type = "Renderer", this.alpha = e, this.antialias = t, this.premultipliedAlpha = s, this.depth = i, this.failIfMajorPerformanceCaveat = r, this.preserveDrawingBuffer = a, this.stencil = h, this.container = o, this.pixelRatio = l, this._renderingScale = d, this.production = c, this.onError = u, this.onSuccess = f, this.onContextLost = y, this.onContextRestored = _, this.onDisposed = v, this.onSceneChange = x, this.initState(), this.canvas = document.createElement("canvas");
+    this.type = "Renderer", this.alpha = e, this.antialias = t, this.premultipliedAlpha = s, this.depth = i, this.failIfMajorPerformanceCaveat = r, this.preserveDrawingBuffer = a, this.stencil = h, this.container = o, this.pixelRatio = l, this._renderingScale = d, this.production = c, this.onError = u, this.onSuccess = f, this.onContextLost = m, this.onContextRestored = x, this.onDisposed = v, this.onSceneChange = y, this.initState(), this.canvas = document.createElement("canvas");
     const p = {
       alpha: this.alpha,
       premultipliedAlpha: this.premultipliedAlpha,
@@ -828,9 +828,9 @@ class Ue {
     watchScroll: c = !0,
     pixelRatio: u = window.devicePixelRatio || 1,
     renderingScale: f = 1,
-    production: y = !1
+    production: m = !1
   } = {}) {
-    this.type = "Curtains", this._autoResize = l, this._autoRender = d, this._watchScroll = c, this.pixelRatio = u, f = isNaN(f) ? 1 : parseFloat(f), this._renderingScale = Math.max(0.25, Math.min(1, f)), this.premultipliedAlpha = s, this.alpha = t, this.antialias = i, this.depth = r, this.failIfMajorPerformanceCaveat = a, this.preserveDrawingBuffer = h, this.stencil = o, this.production = y, this.errors = !1, e ? this.setContainer(e) : this.production || g(this.type + ": no container provided in the initial parameters. Use setContainer() method to set one later and initialize the WebGL context");
+    this.type = "Curtains", this._autoResize = l, this._autoRender = d, this._watchScroll = c, this.pixelRatio = u, f = isNaN(f) ? 1 : parseFloat(f), this._renderingScale = Math.max(0.25, Math.min(1, f)), this.premultipliedAlpha = s, this.alpha = t, this.antialias = i, this.depth = r, this.failIfMajorPerformanceCaveat = a, this.preserveDrawingBuffer = h, this.stencil = o, this.production = m, this.errors = !1, e ? this.setContainer(e) : this.production || g(this.type + ": no container provided in the initial parameters. Use setContainer() method to set one later and initialize the WebGL context");
   }
   /***
        Set up our Curtains container and start initializing everything
@@ -1748,8 +1748,8 @@ class B {
        ***/
   getInverse() {
     const e = this.elements, t = new B(), s = t.elements;
-    let i = e[0], r = e[1], a = e[2], h = e[3], o = e[4], l = e[5], d = e[6], c = e[7], u = e[8], f = e[9], y = e[10], _ = e[11], v = e[12], x = e[13], p = e[14], m = e[15], b = i * l - r * o, w = i * d - a * o, P = i * c - h * o, T = r * d - a * l, A = r * c - h * l, M = a * c - h * d, E = u * x - f * v, R = u * p - y * v, D = u * m - _ * v, V = f * p - y * x, W = f * m - _ * x, H = y * m - _ * p, C = b * H - w * W + P * V + T * D - A * R + M * E;
-    return C ? (C = 1 / C, s[0] = (l * H - d * W + c * V) * C, s[1] = (a * W - r * H - h * V) * C, s[2] = (x * M - p * A + m * T) * C, s[3] = (y * A - f * M - _ * T) * C, s[4] = (d * D - o * H - c * R) * C, s[5] = (i * H - a * D + h * R) * C, s[6] = (p * P - v * M - m * w) * C, s[7] = (u * M - y * P + _ * w) * C, s[8] = (o * W - l * D + c * E) * C, s[9] = (r * D - i * W - h * E) * C, s[10] = (v * A - x * P + m * b) * C, s[11] = (f * P - u * A - _ * b) * C, s[12] = (l * R - o * V - d * E) * C, s[13] = (i * V - r * R + a * E) * C, s[14] = (x * w - v * T - p * b) * C, s[15] = (u * T - f * w + y * b) * C, t) : null;
+    let i = e[0], r = e[1], a = e[2], h = e[3], o = e[4], l = e[5], d = e[6], c = e[7], u = e[8], f = e[9], m = e[10], x = e[11], v = e[12], y = e[13], p = e[14], _ = e[15], b = i * l - r * o, w = i * d - a * o, P = i * c - h * o, T = r * d - a * l, A = r * c - h * l, M = a * c - h * d, E = u * y - f * v, R = u * p - m * v, D = u * _ - x * v, V = f * p - m * y, W = f * _ - x * y, H = m * _ - x * p, C = b * H - w * W + P * V + T * D - A * R + M * E;
+    return C ? (C = 1 / C, s[0] = (l * H - d * W + c * V) * C, s[1] = (a * W - r * H - h * V) * C, s[2] = (y * M - p * A + _ * T) * C, s[3] = (m * A - f * M - x * T) * C, s[4] = (d * D - o * H - c * R) * C, s[5] = (i * H - a * D + h * R) * C, s[6] = (p * P - v * M - _ * w) * C, s[7] = (u * M - m * P + x * w) * C, s[8] = (o * W - l * D + c * E) * C, s[9] = (r * D - i * W - h * E) * C, s[10] = (v * A - y * P + _ * b) * C, s[11] = (f * P - u * A - x * b) * C, s[12] = (l * R - o * V - d * E) * C, s[13] = (i * V - r * R + a * E) * C, s[14] = (y * w - v * T - p * b) * C, s[15] = (u * T - f * w + m * b) * C, t) : null;
   }
   /***
        Simple Mat4 scaling helper
@@ -1779,8 +1779,8 @@ class B {
        ***/
   compose(e, t, s) {
     let i = this.elements;
-    const r = t.elements[0], a = t.elements[1], h = t.elements[2], o = t.elements[3], l = r + r, d = a + a, c = h + h, u = r * l, f = r * d, y = r * c, _ = a * d, v = a * c, x = h * c, p = o * l, m = o * d, b = o * c, w = s.x, P = s.y, T = s.z;
-    return i[0] = (1 - (_ + x)) * w, i[1] = (f + b) * w, i[2] = (y - m) * w, i[3] = 0, i[4] = (f - b) * P, i[5] = (1 - (u + x)) * P, i[6] = (v + p) * P, i[7] = 0, i[8] = (y + m) * T, i[9] = (v - p) * T, i[10] = (1 - (u + _)) * T, i[11] = 0, i[12] = e.x, i[13] = e.y, i[14] = e.z, i[15] = 1, this;
+    const r = t.elements[0], a = t.elements[1], h = t.elements[2], o = t.elements[3], l = r + r, d = a + a, c = h + h, u = r * l, f = r * d, m = r * c, x = a * d, v = a * c, y = h * c, p = o * l, _ = o * d, b = o * c, w = s.x, P = s.y, T = s.z;
+    return i[0] = (1 - (x + y)) * w, i[1] = (f + b) * w, i[2] = (m - _) * w, i[3] = 0, i[4] = (f - b) * P, i[5] = (1 - (u + y)) * P, i[6] = (v + p) * P, i[7] = 0, i[8] = (m + _) * T, i[9] = (v - p) * T, i[10] = (1 - (u + x)) * T, i[11] = 0, i[12] = e.x, i[13] = e.y, i[14] = e.z, i[15] = 1, this;
   }
   /***
        Creates a matrix from a quaternion rotation, vector translation and vector scale, rotating and scaling around the given origin
@@ -1798,7 +1798,7 @@ class B {
        ***/
   composeFromOrigin(e, t, s, i) {
     let r = this.elements;
-    const a = t.elements[0], h = t.elements[1], o = t.elements[2], l = t.elements[3], d = a + a, c = h + h, u = o + o, f = a * d, y = a * c, _ = a * u, v = h * c, x = h * u, p = o * u, m = l * d, b = l * c, w = l * u, P = s.x, T = s.y, A = s.z, M = i.x, E = i.y, R = i.z, D = (1 - (v + p)) * P, V = (y + w) * P, W = (_ - b) * P, H = (y - w) * T, C = (1 - (f + p)) * T, oe = (x + m) * T, le = (_ + b) * A, de = (x - m) * A, ce = (1 - (f + v)) * A;
+    const a = t.elements[0], h = t.elements[1], o = t.elements[2], l = t.elements[3], d = a + a, c = h + h, u = o + o, f = a * d, m = a * c, x = a * u, v = h * c, y = h * u, p = o * u, _ = l * d, b = l * c, w = l * u, P = s.x, T = s.y, A = s.z, M = i.x, E = i.y, R = i.z, D = (1 - (v + p)) * P, V = (m + w) * P, W = (x - b) * P, H = (m - w) * T, C = (1 - (f + p)) * T, oe = (y + _) * T, le = (x + b) * A, de = (y - _) * A, ce = (1 - (f + v)) * A;
     return r[0] = D, r[1] = V, r[2] = W, r[3] = 0, r[4] = H, r[5] = C, r[6] = oe, r[7] = 0, r[8] = le, r[9] = de, r[10] = ce, r[11] = 0, r[12] = e.x + M - (D * M + H * E + le * R), r[13] = e.y + E - (V * M + C * E + de * R), r[14] = e.z + R - (W * M + oe * E + ce * R), r[15] = 1, this;
   }
 }
@@ -3045,7 +3045,7 @@ class st {
     cullFace: u = "back",
     // textures
     texturesOptions: f = {},
-    crossOrigin: y = "anonymous"
+    crossOrigin: m = "anonymous"
   } = {}) {
     if (this.type = t, e = e && e.renderer || e, (!e || e.type !== "Renderer") && (O(this.type + ": Curtains not passed as first argument or Curtains Renderer is missing", e), setTimeout(() => {
       this._onErrorCallback && this._onErrorCallback();
@@ -3064,7 +3064,7 @@ class st {
       wrapT: this.gl.CLAMP_TO_EDGE,
       minFilter: this.gl.LINEAR,
       magFilter: this.gl.LINEAR
-    }, f), this.crossOrigin = y, !r && s && document.getElementById(s) && (r = document.getElementById(s).innerHTML), !a && i && document.getElementById(i) && (a = document.getElementById(i).innerHTML), this._initMesh(), o = parseInt(o), l = parseInt(l), this._geometry = new Ze(this.renderer, {
+    }, f), this.crossOrigin = m, !r && s && document.getElementById(s) && (r = document.getElementById(s).innerHTML), !a && i && document.getElementById(i) && (a = document.getElementById(i).innerHTML), this._initMesh(), o = parseInt(o), l = parseInt(l), this._geometry = new Ze(this.renderer, {
       width: o,
       height: l
       // using a special ID for shader passes to avoid weird buffer binding bugs on mac devices
@@ -3384,8 +3384,8 @@ class rt extends st {
     fragmentShaderID: c,
     vertexShader: u,
     fragmentShader: f,
-    texturesOptions: y,
-    crossOrigin: _
+    texturesOptions: m,
+    crossOrigin: x
   } = {}) {
     d = d || t && t.getAttribute("data-vs-id"), c = c || t && t.getAttribute("data-fs-id"), super(e, s, {
       widthSegments: i,
@@ -3398,8 +3398,8 @@ class rt extends st {
       fragmentShaderID: c,
       vertexShader: u,
       fragmentShader: f,
-      texturesOptions: y,
-      crossOrigin: _
+      texturesOptions: m,
+      crossOrigin: x
     }), this.gl && (this.htmlElement = t, (!this.htmlElement || this.htmlElement.length === 0) && (this.renderer.production || g(this.type + ": The HTML element you specified does not currently exists in the DOM")), this._setDocumentSizes());
   }
   /*** PLANE SIZES ***/
@@ -3743,18 +3743,18 @@ class we extends rt {
     vertexShader: c,
     fragmentShader: u,
     texturesOptions: f,
-    crossOrigin: y,
+    crossOrigin: m,
     // Plane specific params
-    alwaysDraw: _ = !1,
+    alwaysDraw: x = !1,
     visible: v = !0,
-    transparent: x = !1,
+    transparent: y = !1,
     drawCheckMargins: p = {
       top: 0,
       right: 0,
       bottom: 0,
       left: 0
     },
-    autoloadSources: m = !0,
+    autoloadSources: _ = !0,
     watchScroll: b = !0,
     fov: w = 50
   } = {}) {
@@ -3770,8 +3770,8 @@ class we extends rt {
       vertexShader: c,
       fragmentShader: u,
       texturesOptions: f,
-      crossOrigin: y
-    }), this.gl && (this.index = this.renderer.planes.length, this.target = null, this.alwaysDraw = _, this._shouldDraw = !0, this.visible = v, this._transparent = x, this.drawCheckMargins = p, this.autoloadSources = m, this.watchScroll = b, this._updateMVMatrix = !1, this.camera = new at({
+      crossOrigin: m
+    }), this.gl && (this.index = this.renderer.planes.length, this.target = null, this.alwaysDraw = x, this._shouldDraw = !0, this.visible = v, this._transparent = y, this.drawCheckMargins = p, this.autoloadSources = _, this.watchScroll = b, this._updateMVMatrix = !1, this.camera = new at({
       fov: w,
       width: this.renderer._boundingRect.width,
       height: this.renderer._boundingRect.height,
@@ -4419,12 +4419,12 @@ class yt extends we {
     fragmentShaderID: c,
     vertexShader: u,
     fragmentShader: f,
-    texturesOptions: y,
-    crossOrigin: _,
+    texturesOptions: m,
+    crossOrigin: x,
     alwaysDraw: v,
-    visible: x,
+    visible: y,
     transparent: p,
-    drawCheckMargins: m,
+    drawCheckMargins: _,
     autoloadSources: b,
     watchScroll: w,
     fov: P
@@ -4440,12 +4440,12 @@ class yt extends we {
       fragmentShaderID: c,
       vertexShader: u,
       fragmentShader: f,
-      texturesOptions: y,
-      crossOrigin: _,
+      texturesOptions: m,
+      crossOrigin: x,
       alwaysDraw: v,
-      visible: x,
+      visible: y,
       transparent: p,
-      drawCheckMargins: m,
+      drawCheckMargins: _,
       autoloadSources: b,
       watchScroll: w,
       fov: P
@@ -4454,11 +4454,11 @@ class yt extends we {
     this.renderer.scene.removePlane(this), this.type = "PingPongPlane", this.renderer.scene.addPlane(this), this.readPass = new ne(e, {
       depth: !1,
       clear: !1,
-      texturesOptions: y
+      texturesOptions: m
     }), this.writePass = new ne(e, {
       depth: !1,
       clear: !1,
-      texturesOptions: y
+      texturesOptions: m
     }), this.createTexture({
       sampler: s
     });
@@ -4979,19 +4979,19 @@ void main() {
   var i = t(1);
   function r(h, o, l, d, c, u, f) {
     o === void 0 && (o = [[0, "#fff"], [1, "#fff"]]), l === void 0 && (l = 0), d === void 0 && (d = 0), c === void 0 && (c = 0), u === void 0 && (u = 2 * Math.PI), f === void 0 && (f = !1);
-    var y = Math.floor(180 * c / Math.PI), _ = Math.ceil(180 * u / Math.PI), v = document.createElement("canvas");
+    var m = Math.floor(180 * c / Math.PI), x = Math.ceil(180 * u / Math.PI), v = document.createElement("canvas");
     v.width = h.canvas.width, v.height = h.canvas.height;
-    var x = v.getContext("2d"), p = [[0, 0], [h.canvas.width, 0], [h.canvas.width, h.canvas.height], [0, h.canvas.height]], m = Math.max.apply(Math, p.map(function(M) {
+    var y = v.getContext("2d"), p = [[0, 0], [h.canvas.width, 0], [h.canvas.width, h.canvas.height], [0, h.canvas.height]], _ = Math.max.apply(Math, p.map(function(M) {
       var E = M[0], R = M[1];
       return Math.sqrt(Math.pow(E - l, 2) + Math.pow(R - d, 2));
     })) + 10;
-    x.translate(l, d);
-    for (var b = 2 * Math.PI * (m + 20) / 360, w = new i.default(o, _ - y + 1), P = y; P <= _; P++)
-      x.save(), x.rotate((f ? -1 : 1) * (Math.PI * P) / 180), x.beginPath(), x.moveTo(0, 0), x.lineTo(m, -2 * b), x.lineTo(m, 0), x.fillStyle = w.getColor(P - y), x.fill(), x.closePath(), x.restore();
+    y.translate(l, d);
+    for (var b = 2 * Math.PI * (_ + 20) / 360, w = new i.default(o, x - m + 1), P = m; P <= x; P++)
+      y.save(), y.rotate((f ? -1 : 1) * (Math.PI * P) / 180), y.beginPath(), y.moveTo(0, 0), y.lineTo(_, -2 * b), y.lineTo(_, 0), y.fillStyle = w.getColor(P - m), y.fill(), y.closePath(), y.restore();
     var T = document.createElement("canvas");
     T.width = h.canvas.width, T.height = h.canvas.height;
     var A = T.getContext("2d");
-    return A.beginPath(), A.arc(l, d, m, c, u, f), A.lineTo(l, d), A.closePath(), A.fillStyle = A.createPattern(v, "no-repeat"), A.fill(), h.createPattern(T, "no-repeat");
+    return A.beginPath(), A.arc(l, d, _, c, u, f), A.lineTo(l, d), A.closePath(), A.fillStyle = A.createPattern(v, "no-repeat"), A.fill(), h.createPattern(T, "no-repeat");
   }
   e.default = r, CanvasRenderingContext2D.prototype.createConicalGradient = function() {
     for (var h = [], o = 0; o < arguments.length; o++)
@@ -5489,9 +5489,9 @@ class Gt extends ie {
         let h = this.coords[0][0] < this.coords[1][0], o = this.coords[0][1] > this.coords[2][1], l = [-1, 1, -1, 1];
         h && (l = [-1, -1, -1, -1]), o && (l = [1, 1, 1, 1]), h && o && (l = [1, -1, 1, -1]);
         for (let d = 0; d < t.length; d++) {
-          const [c, u] = t[d], [f, y] = t[(d + 1) % t.length], _ = (d + 1) * Math.PI / 2 + a, [v, x] = r(i, 0, _);
+          const [c, u] = t[d], [f, m] = t[(d + 1) % t.length], x = (d + 1) * Math.PI / 2 + a, [v, y] = r(i, 0, x);
           let p = l[d];
-          this.local.ctx.lineTo(c - v * p, u - x * p), this.local.ctx.arcTo(c, u, f, y, i);
+          this.local.ctx.lineTo(c - v * p, u - y * p), this.local.ctx.arcTo(c, u, f, m, i);
         }
         this.local.ctx.closePath(), this.local.ctx.stroke();
       }
@@ -5510,17 +5510,17 @@ class Gt extends ie {
     } else if (this.type === "polygon") {
       const s = this.numSides;
       if (t.length >= 2) {
-        const i = G(t), r = G(this.coords), a = this.coords[0][1] > this.coords[2][1], h = i.center.y, o = i.center.x, l = (f, y, _, v, x) => {
-          const p = Math.cos(_), m = Math.sin(_);
-          f -= v, y -= x;
-          const b = f * p - y * m, w = f * m + y * p;
-          return f = b + v, y = w + x, [f, y];
+        const i = G(t), r = G(this.coords), a = this.coords[0][1] > this.coords[2][1], h = i.center.y, o = i.center.x, l = (f, m, x, v, y) => {
+          const p = Math.cos(x), _ = Math.sin(x);
+          f -= v, m -= y;
+          const b = f * p - m * _, w = f * _ + m * p;
+          return f = b + v, m = w + y, [f, m];
         }, d = (this.rotation + (a ? 0.5 : 0)) * 2 * Math.PI, c = r.width / Math.sqrt(3) * 0.86, u = r.height / Math.sqrt(3) * 0.86;
         this.local.ctx.beginPath();
         for (let f = 0; f < s; f++) {
-          const _ = -Math.PI / 2 + 2 * Math.PI * f / s;
-          let v = o + c * Math.cos(_), x = h + u * Math.sin(_);
-          [v, x] = l(v, x, d, o, h), f === 0 ? this.local.ctx.moveTo(v, x) : this.local.ctx.lineTo(v, x);
+          const x = -Math.PI / 2 + 2 * Math.PI * f / s;
+          let v = o + c * Math.cos(x), y = h + u * Math.sin(x);
+          [v, y] = l(v, y, d, o, h), f === 0 ? this.local.ctx.moveTo(v, y) : this.local.ctx.lineTo(v, y);
         }
         this.local.ctx.closePath();
       }
@@ -5677,50 +5677,50 @@ class Xt extends ie {
     this.local.textBoxPos = { x: s, y: i }, this.local.ctx.clearRect(0, 0, this.state().canvasWidth, this.state().canvasHeight), this.local.ctx.font = `${d} ${c} ${o}px/${l}px ${this.fontFamily}, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial`, this.isSafari || (this.local.ctx.textAlign = this.textAlign, this.local.ctx.letterSpacing = this.letterSpacing + "px");
     const u = this.local.ctx.measureText("m").width;
     a = Math.max(a, u), this.local.ctx.save(), this.local.ctx.translate(s + a / 2, i + h / 2), this.local.ctx.rotate(this.rotation * 360 * Math.PI / 180), this.local.ctx.translate(-(s + a / 2), -(i + h / 2)), this.textAlign === "center" && (s += a / 2), this.textAlign === "right" && (s += a), this.local.ctx.fillStyle = Ee(this.local.ctx, this, this.coords);
-    const f = (p, m, b, w, P, T, A) => {
-      let M = m.split("").reduce((R, D, V) => R + p.measureText(D).width + (V < m.length - 1 ? P : 0), 0), E;
+    const f = (p, _, b, w, P, T, A) => {
+      let M = _.split("").reduce((R, D, V) => R + p.measureText(D).width + (V < _.length - 1 ? P : 0), 0), E;
       if (T === "center" ? E = b + (A - M) / 2 - A / 2 : E = b, T === "right")
-        for (let R = m.length - 1; R >= 0; R--) {
-          const D = m[R];
+        for (let R = _.length - 1; R >= 0; R--) {
+          const D = _[R];
           E -= p.measureText(D).width, p.fillText(D, E, w), R > 0 && (E -= P);
         }
       else
-        for (let R = 0; R < m.length; R++)
-          p.fillText(m[R], E, w), E += p.measureText(m[R]).width + P;
-    }, y = (p, m) => {
-      let b = i + l * m + l / 2 + o / 3;
+        for (let R = 0; R < _.length; R++)
+          p.fillText(_[R], E, w), E += p.measureText(_[R]).width + P;
+    }, m = (p, _) => {
+      let b = i + l * _ + l / 2 + o / 3;
       this.isSafari ? f(this.local.ctx, p, s, b, this.letterSpacing, this.textAlign, a) : this.local.ctx.fillText(p, s, b);
-    }, _ = this.textContent ? this.textContent.split(`
+    }, x = this.textContent ? this.textContent.split(`
 `) : [""];
-    let v = _.length;
-    const x = (p, m, b) => m.split("").reduce((P, T, A) => (P += p.measureText(T).width, A < m.length - 1 && (P += b), P), 0);
+    let v = x.length;
+    const y = (p, _, b) => _.split("").reduce((P, T, A) => (P += p.measureText(T).width, A < _.length - 1 && (P += b), P), 0);
     for (let p = 0; p < v; p++) {
-      let m = "", b = _[p].split(/(\s|\n)/);
+      let _ = "", b = x[p].split(/(\s|\n)/);
       for (let w = 0; w < b.length; w++) {
-        const P = b[w], T = m + P;
-        if ((this.isSafari && this.letterSpacing ? x(this.local.ctx, T, this.letterSpacing) : this.local.ctx.measureText(T).width) > a || P === `
+        const P = b[w], T = _ + P;
+        if ((this.isSafari && this.letterSpacing ? y(this.local.ctx, T, this.letterSpacing) : this.local.ctx.measureText(T).width) > a || P === `
 `) {
-          if (m !== "")
-            _[p] = m.trim(), w !== b.length - 1 ? (_.splice(p + 1, 0, b.slice(w).join("")), v++) : P !== `
-` && _.push(P);
+          if (_ !== "")
+            x[p] = _.trim(), w !== b.length - 1 ? (x.splice(p + 1, 0, b.slice(w).join("")), v++) : P !== `
+` && x.push(P);
           else {
             let M = P, E = p;
             for (; M.length > 0; ) {
               let R = "";
               for (let D = 0; D < M.length && (this.local.ctx.measureText(R + M[D]).width <= a || D == 0); D++)
                 R += M[D];
-              M = M.slice(R.length), _[E] = R.trim(), M.length > 0 && (_.splice(E + 1, 0, M), E++, v++);
+              M = M.slice(R.length), x[E] = R.trim(), M.length > 0 && (x.splice(E + 1, 0, M), E++, v++);
             }
-            b.slice(w + 1).length > 0 && (_[E] += b.slice(w + 1).join(""));
+            b.slice(w + 1).length > 0 && (x[E] += b.slice(w + 1).join(""));
           }
           break;
         } else
-          m = T;
-        w === b.length - 1 && (_[p] = m.trim());
+          _ = T;
+        w === b.length - 1 && (x[p] = _.trim());
       }
     }
-    _.forEach((p, m) => {
-      y(p, r), m < _.length - 1 && r++;
+    x.forEach((p, _) => {
+      m(p, r), _ < x.length - 1 && r++;
     }), this.local.ctx.translate(-(s + a / 2), -(i + h / 2)), this.local.ctx.restore(), this.height = this.lineHeight * r + this.lineHeight;
   }
 }
@@ -6026,18 +6026,21 @@ class Jt {
   }
   handleChildEffectPlane(e, t, s) {
     const i = "passIndex" in s ? this.getPassPlane(e, s.passIndex) : e.getPlane(), r = e.getParent();
-    let a = this.getRenderTargets()[t - 1], h = r.effects.filter((u) => {
-      if (this.history.find((f) => f.parentLayer === u))
-        return this.history.find((f) => f.parentLayer === u).visible;
-    }), o = h.indexOf(e.parentLayer), l = h.at(-1) === h[o], d = s.passIndex === s.length;
-    i && a && (o || s.passIndex > 0) ? (i.createTexture({
+    let a = this.getRenderTargets()[t - 1], h = this.curtain.planes.find((f) => f.type === "PingPongPlane"), o = r.effects.filter((f) => {
+      if (this.history.find((m) => m.parentLayer === f))
+        return this.history.find((m) => m.parentLayer === f).visible;
+    }), l = o.indexOf(e.parentLayer), d = o.at(-1) === o[l], c = s.passIndex === s.length;
+    h && e.type === "mouse" && i.createTexture({
+      sampler: "uPingPongTexture",
+      fromTexture: h.getTexture()
+    }), i && a && (l || s.passIndex > 0) ? (i.createTexture({
       sampler: "uTexture",
       premultipliedAlpha: !0,
       fromTexture: a.getTexture()
-    }), e.isMask && (!s.length || l && d) && i.loadCanvas(r.local.canvas, {
+    }), e.isMask && (!s.length || d && c) && i.loadCanvas(r.local.canvas, {
       premultipliedAlpha: !0,
       sampler: "uMaskTexture"
-    })) : i && e.isMask ? (l && d && i.loadCanvas(r.local.canvas, {
+    })) : i && e.isMask ? (d && c && i.loadCanvas(r.local.canvas, {
       premultipliedAlpha: !0,
       sampler: "uMaskTexture"
     }), a && i.createTexture({
@@ -6052,10 +6055,10 @@ class Jt {
       premultipliedAlpha: !0,
       fromTexture: this.getRenderTargets()[t]
     });
-    const c = e.texture || e.data.texture;
-    c && (i.userData.textureLoaded = !1, i.loadImage(c.src, {
-      sampler: c.sampler
-    }, (u) => {
+    const u = e.texture || e.data.texture;
+    u && (i.userData.textureLoaded = !1, i.loadImage(u.src, {
+      sampler: u.sampler
+    }, (f) => {
       i.userData.textureLoaded = !0, this.curtain.render();
     }));
   }

@@ -4,7 +4,7 @@
 
 Add the script tag to the `<head>` of your page
 ```html
-<script src="https://cdn.unicorn.studio/v1.1.0/unicornStudio.umd.js"></script>
+<script src="https://cdn.unicorn.studio/v1.2.0/unicornStudio.umd.js"></script>
 ```
 
 or import into your component
@@ -46,10 +46,6 @@ You can add a scene dynamically during or after pageload.
       mouse: {
         disableMobile: true, // disable touch movement on mobile
         momentum: 1.1 // mouse movement momentum
-      },
-      scroll: {
-        disableMobile: true, // disable scroll effects on mobile
-        momentum: 1.1 // scroll momentum
       }
     }
   }).then(scene => {

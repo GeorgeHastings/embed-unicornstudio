@@ -1401,10 +1401,10 @@ precision mediump float;
 `, J = Ne.replace(/\n/g, ""), Be = `
 attribute vec3 aVertexPosition;
 attribute vec2 aTextureCoord;
-`, Pe = Be.replace(/\n/g, ""), We = `
+`, we = Be.replace(/\n/g, ""), We = `
 varying vec3 vVertexPosition;
 varying vec2 vTextureCoord;
-`, ee = We.replace(/\n/g, ""), He = J + Pe + ee + `
+`, ee = We.replace(/\n/g, ""), He = J + we + ee + `
 uniform mat4 uMVMatrix;
 uniform mat4 uPMatrix;
 
@@ -1418,7 +1418,7 @@ void main() {
 void main() {
     gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
 }
-`, Xe = je.replace(/\n/g, ""), Ye = J + Pe + ee + `
+`, Xe = je.replace(/\n/g, ""), Ye = J + we + ee + `
 void main() {
     vTextureCoord = aTextureCoord;
     vVertexPosition = aVertexPosition;
@@ -1432,8 +1432,8 @@ void main() {
     gl_FragColor = texture2D(uRenderTexture, vTextureCoord);
 }
 `, Qe = $e.replace(/\n/g, "");
-let ue = 0;
-class fe {
+let fe = 0;
+class pe {
   constructor(e, {
     parent: t,
     vertexShader: s,
@@ -1492,7 +1492,7 @@ class fe {
    Add the program to the cache
    ***/
   createProgram() {
-    if (ue++, this.id = ue, this.program = this.gl.createProgram(), this.gl.attachShader(this.program, this.vertexShader), this.gl.attachShader(this.program, this.fragmentShader), this.gl.linkProgram(this.program), !this.renderer.production && !this.gl.getProgramParameter(this.program, this.gl.LINK_STATUS)) {
+    if (fe++, this.id = fe, this.program = this.gl.createProgram(), this.gl.attachShader(this.program, this.vertexShader), this.gl.attachShader(this.program, this.fragmentShader), this.gl.linkProgram(this.program), !this.renderer.production && !this.gl.getProgramParameter(this.program, this.gl.LINK_STATUS)) {
       g(this.type + ": Unable to initialize the shader program: " + this.gl.getProgramInfoLog(this.program)), g(this.type + ": Will use default vertex and fragment shaders"), this.vertexShader = this.createShader(this.defaultVsCode, this.gl.VERTEX_SHADER), this.fragmentShader = this.createShader(this.defaultFsCode, this.gl.FRAGMENT_SHADER), this.createProgram();
       return;
     }
@@ -1798,8 +1798,8 @@ class B {
        ***/
   composeFromOrigin(e, t, s, i) {
     let r = this.elements;
-    const a = t.elements[0], h = t.elements[1], o = t.elements[2], l = t.elements[3], d = a + a, c = h + h, u = o + o, f = a * d, m = a * c, x = a * u, v = h * c, y = h * u, p = o * u, _ = l * d, b = l * c, w = l * u, P = s.x, T = s.y, A = s.z, M = i.x, E = i.y, R = i.z, D = (1 - (v + p)) * P, V = (m + w) * P, W = (x - b) * P, H = (m - w) * T, C = (1 - (f + p)) * T, oe = (y + _) * T, le = (x + b) * A, de = (y - _) * A, ce = (1 - (f + v)) * A;
-    return r[0] = D, r[1] = V, r[2] = W, r[3] = 0, r[4] = H, r[5] = C, r[6] = oe, r[7] = 0, r[8] = le, r[9] = de, r[10] = ce, r[11] = 0, r[12] = e.x + M - (D * M + H * E + le * R), r[13] = e.y + E - (V * M + C * E + de * R), r[14] = e.z + R - (W * M + oe * E + ce * R), r[15] = 1, this;
+    const a = t.elements[0], h = t.elements[1], o = t.elements[2], l = t.elements[3], d = a + a, c = h + h, u = o + o, f = a * d, m = a * c, x = a * u, v = h * c, y = h * u, p = o * u, _ = l * d, b = l * c, w = l * u, P = s.x, T = s.y, A = s.z, M = i.x, E = i.y, R = i.z, D = (1 - (v + p)) * P, V = (m + w) * P, W = (x - b) * P, H = (m - w) * T, C = (1 - (f + p)) * T, le = (y + _) * T, de = (x + b) * A, ce = (y - _) * A, ue = (1 - (f + v)) * A;
+    return r[0] = D, r[1] = V, r[2] = W, r[3] = 0, r[4] = H, r[5] = C, r[6] = le, r[7] = 0, r[8] = de, r[9] = ce, r[10] = ue, r[11] = 0, r[12] = e.x + M - (D * M + H * E + de * R), r[13] = e.y + E - (V * M + C * E + ce * R), r[14] = e.z + R - (W * M + le * E + ue * R), r[15] = 1, this;
   }
 }
 class I {
@@ -3069,7 +3069,7 @@ class st {
       height: l
       // using a special ID for shader passes to avoid weird buffer binding bugs on mac devices
       //id: this.type === "ShaderPass" ? 1 : widthSegments * heightSegments + widthSegments
-    }), this._program = new fe(this.renderer, {
+    }), this._program = new pe(this.renderer, {
       parent: this,
       vertexShader: r,
       fragmentShader: a
@@ -3091,7 +3091,7 @@ class st {
    Used internally to handle context restoration
    ***/
   _restoreContext() {
-    this._canDraw = !1, this._matrices && (this._matrices = null), this._program = new fe(this.renderer, {
+    this._canDraw = !1, this._matrices && (this._matrices = null), this._program = new pe(this.renderer, {
       parent: this,
       vertexShader: this._program.vsCode,
       fragmentShader: this._program.fsCode
@@ -3370,7 +3370,7 @@ while loading this video:
     }
   }
 }
-const pe = new I(), it = new I();
+const ge = new I(), it = new I();
 class rt extends st {
   constructor(e, t, s = "DOMMesh", {
     // Mesh params
@@ -3456,7 +3456,7 @@ class rt extends st {
        @mousePosition (Vec2 object): the mouse position relative to our plane in WebGL space coordinates
        ***/
   mouseToPlaneCoords(e) {
-    const t = this.scale ? this.scale : it.set(1, 1), s = pe.set(
+    const t = this.scale ? this.scale : it.set(1, 1), s = ge.set(
       (this._boundingRect.document.width - this._boundingRect.document.width * t.x) / 2,
       (this._boundingRect.document.height - this._boundingRect.document.height * t.y) / 2
     ), i = {
@@ -3465,7 +3465,7 @@ class rt extends st {
       top: (this._boundingRect.document.top + s.y) / this.renderer.pixelRatio,
       left: (this._boundingRect.document.left + s.x) / this.renderer.pixelRatio
     };
-    return pe.set(
+    return ge.set(
       (e.x - i.left) / i.width * 2 - 1,
       1 - (e.y - i.top) / i.height * 2
     );
@@ -3728,8 +3728,8 @@ class te {
     return this.axisOrder === "XYZ" ? (this.elements[0] = o * a * h + r * l * d, this.elements[1] = r * l * h - o * a * d, this.elements[2] = r * a * d + o * l * h, this.elements[3] = r * a * h - o * l * d) : this.axisOrder === "YXZ" ? (this.elements[0] = o * a * h + r * l * d, this.elements[1] = r * l * h - o * a * d, this.elements[2] = r * a * d - o * l * h, this.elements[3] = r * a * h + o * l * d) : this.axisOrder === "ZXY" ? (this.elements[0] = o * a * h - r * l * d, this.elements[1] = r * l * h + o * a * d, this.elements[2] = r * a * d + o * l * h, this.elements[3] = r * a * h - o * l * d) : this.axisOrder === "ZYX" ? (this.elements[0] = o * a * h - r * l * d, this.elements[1] = r * l * h + o * a * d, this.elements[2] = r * a * d - o * l * h, this.elements[3] = r * a * h + o * l * d) : this.axisOrder === "YZX" ? (this.elements[0] = o * a * h + r * l * d, this.elements[1] = r * l * h + o * a * d, this.elements[2] = r * a * d - o * l * h, this.elements[3] = r * a * h - o * l * d) : this.axisOrder === "XZY" && (this.elements[0] = o * a * h - r * l * d, this.elements[1] = r * l * h - o * a * d, this.elements[2] = r * a * d + o * l * h, this.elements[3] = r * a * h + o * l * d), this;
   }
 }
-const nt = new I(), ht = new S(), ot = new S(), lt = new S(), dt = new S(), ct = new S(), ut = new S(), k = new S(), F = new S(), ge = new te(), ft = new S(0.5, 0.5, 0), pt = new S(), gt = new S(), mt = new S(), _t = new S(), xt = new I();
-class we extends rt {
+const nt = new I(), ht = new S(), ot = new S(), lt = new S(), dt = new S(), ct = new S(), ut = new S(), k = new S(), F = new S(), me = new te(), ft = new S(0.5, 0.5, 0), pt = new S(), gt = new S(), mt = new S(), _t = new S(), xt = new I();
+class Te extends rt {
   constructor(e, t, {
     // Mesh params
     widthSegments: s,
@@ -4236,7 +4236,7 @@ class we extends rt {
        @mousePosition (Vec2 object): the mouse position relative to our plane in WebGL space coordinates
        ***/
   mouseToPlaneCoords(e) {
-    if (ge.setAxisOrder(this.quaternion.axisOrder), ge.equals(this.quaternion) && ft.equals(this.transformOrigin))
+    if (me.setAxisOrder(this.quaternion.axisOrder), me.equals(this.quaternion) && ft.equals(this.transformOrigin))
       return super.mouseToPlaneCoords(e);
     {
       const t = {
@@ -4404,7 +4404,7 @@ class ne {
     this._frameBuffer && (this.gl.deleteFramebuffer(this._frameBuffer), this._frameBuffer = null), this._depthBuffer && (this.gl.deleteRenderbuffer(this._depthBuffer), this._depthBuffer = null), this.textures[0]._dispose(), this.textures = [];
   }
 }
-class yt extends we {
+class yt extends Te {
   constructor(e, t, {
     sampler: s = "uPingPongTexture",
     // Plane params
@@ -4528,7 +4528,7 @@ class yt extends we {
     this.target = null, this.renderer.bindFrameBuffer(null), this.writePass && (this.writePass.remove(), this.writePass = null), this.readPass && (this.readPass.remove(), this.readPass = null), super.remove();
   }
 }
-const Q = (n, e, t) => n * (1 - t) + e * t, Te = (n, e, t, s) => Math.sqrt(Math.pow(n - t, 2) + Math.pow(e - s, 2)), vt = (n, e, t, s) => (s - t) / (e - n);
+const Q = (n, e, t) => n * (1 - t) + e * t, Re = (n, e, t, s) => Math.sqrt(Math.pow(n - t, 2) + Math.pow(e - s, 2)), vt = (n, e, t, s) => (s - t) / (e - n);
 function bt(n) {
   return n.map((e, t) => t > 0 ? Math.sqrt(
     Math.pow(e[0] - n[t - 1][0], 2) + Math.pow(e[1] - n[t - 1][1], 2)
@@ -4538,7 +4538,7 @@ const Pt = (n, e) => {
   const t = [n[0]], s = n.length - 1;
   let i = 0;
   for (let r = 1; r < s; r++) {
-    const a = Te(
+    const a = Re(
       n[r][0],
       n[r][1],
       n[r - 1][0],
@@ -4558,7 +4558,7 @@ const Pt = (n, e) => {
   function r(a) {
     let h = 1, o = 0;
     for (; n[h + 1] && o < a * e; )
-      o += Te(n[h][0], n[h][1], n[h - 1][0], n[h - 1][1]), h++;
+      o += Re(n[h][0], n[h][1], n[h - 1][0], n[h - 1][1]), h++;
     return n[h];
   }
   for (let a = 0; a < s; a++) {
@@ -4574,13 +4574,13 @@ const Pt = (n, e) => {
     i.push([+(d.x * Math.abs(Math.cos(l)) * e + i[a][0]).toFixed(1), +(d.y * Math.abs(Math.sin(l)) * e + i[a][1]).toFixed(1)]);
   }
   return i;
-}, me = (n, e) => {
+}, _e = (n, e) => {
   const t = Math.max(1.5, e / 500 * 4);
   return wt(
     Pt(n, t),
     t
   );
-}, _e = {
+}, xe = {
   NORMAL: "src",
   ADD: "src + dst",
   SUBTRACT: "src - dst",
@@ -4600,17 +4600,17 @@ const Pt = (n, e) => {
   PIN_LIGHT: "vec3((src.x > 0.5) ? max(dst.x, 2.0 * (src.x - 0.5)) : min(dst.x, 2.0 * src.x), (src.x > 0.5) ? max(dst.y, 2.0 * (src.y - 0.5)) : min(dst.y, 2.0 * src.y), (src.z > 0.5) ? max(dst.z, 2.0 * (src.z - 0.5)) : min(dst.z, 2.0 * src.z))",
   VIDID_LIGHT: "vec3((src.x <= 0.5) ? (1.0 - (1.0 - dst.x) / (2.0 * src.x)) : (dst.x / (2.0 * (1.0 - src.x))), (src.y <= 0.5) ? (1.0 - (1.0 - dst.y) / (2.0 * src.y)) : (dst.y / (2.0 * (1.0 - src.y))), (src.z <= 0.5) ? (1.0 - (1.0 - dst.z) / (2.0 * src.z)) : (dst.z / (2.0 * (1.0 - src.z))))"
 };
-let Re = "";
-Object.keys(_e).forEach((n, e) => {
-  Re += `
+let Se = "";
+Object.keys(xe).forEach((n, e) => {
+  Se += `
     if(blendMode == ${e}) {
-      return ${_e[n]};
+      return ${xe[n]};
     }
   `;
 });
 const Tt = `
   vec3 blend (int blendMode, vec3 src, vec3 dst) {
-    ${Re} 
+    ${Se} 
   }
 `, Rt = {
   LINEAR: "t",
@@ -4641,7 +4641,7 @@ const Tt = `
 };
 Object.keys(Rt).forEach((n, e) => {
 });
-const Se = `#version 300 es
+const Ee = `#version 300 es
 precision mediump float;
 
 in vec3 aVertexPosition;
@@ -4712,7 +4712,7 @@ void main() {
 }
 `, Et = {
   fragmentShader: St,
-  vertexShader: Se,
+  vertexShader: Ee,
   crossorigin: "Anonymous",
   texturesOptions: {
     floatingPoint: "none",
@@ -4873,7 +4873,7 @@ void main() {
 }
 `, At = {
   fragmentShader: Mt,
-  vertexShader: Se,
+  vertexShader: Ee,
   crossorigin: "Anonymous",
   texturesOptions: {
     floatingPoint: "none",
@@ -5049,7 +5049,7 @@ const Ct = (n, e, t, s, i) => {
       [s, a]
     ]
   };
-}, Ee = (n, e, t) => {
+}, Me = (n, e, t) => {
   let s;
   const i = G(t);
   if (e.fill.length > 1) {
@@ -5124,7 +5124,7 @@ const Ot = () => {
 function U(n) {
   return n && typeof n == "string" && (n = JSON.parse(n)), Object.values(n);
 }
-function xe(n, e, t) {
+function ye(n, e, t) {
   for (let s = 0; s < t; s++)
     n = (n + e) / 2;
   return +((n + e) / 2).toFixed(2);
@@ -5141,7 +5141,7 @@ function $(n, e) {
   const t = n[0] / n[1], s = Math.sqrt(t * (3e5 * (e || 1)));
   return [s, s / t];
 }
-function Me() {
+function oe() {
   return /Android|iPhone/i.test(navigator.userAgent);
 }
 function j(n) {
@@ -5160,7 +5160,7 @@ function zt(n, e, t) {
         s.push(new jt(i, e, t).unpackage());
         break;
       case "fill":
-        s.push(new ye(i, e, t).unpackage());
+        s.push(new ve(i, e, t).unpackage());
         break;
       case "draw":
         s.push(new Ht(i, e, t).unpackage());
@@ -5169,7 +5169,7 @@ function zt(n, e, t) {
         s.push(new Gt(i, e, t).unpackage());
         break;
       case "effect":
-        s.push(new ye(i, e, t).unpackage());
+        s.push(new ve(i, e, t).unpackage());
         break;
     }
   }), s;
@@ -5200,7 +5200,7 @@ function Ft(n, e) {
 }
 function Ut(n, e) {
   const s = $([e.offsetWidth || n.width, e.offsetHeight || n.height])[0] / e.offsetWidth, i = n.getPositionOffset(), r = document.createElement("div");
-  r.setAttribute("data-us-text", "loading"), r.setAttribute("data-us-project", n.local.projectId), r.style.width = n.width / s + "px", r.style.height = n.height / s + "px", r.style.top = i.y / s + e.offsetTop + "px", r.style.left = i.x / s + e.offsetLeft + "px", r.style.fontSize = n.fontSize / s + "px", r.style.lineHeight = n.lineHeight / s + "px", r.style.letterSpacing = n.letterSpacing / s + "px", r.style.fontFamily = n.fontFamily, r.style.fontWeight = n.fontWeight, r.style.textAlign = n.textAlign, r.style.wordBreak = "break-word", r.style.transform = `rotateZ(${Math.round(n.rotation * 360)}deg)`, r.style.color = "transparent", r.style.zIndex = 2, r.innerText = n.textContent, e.appendChild(r);
+  r.setAttribute("data-us-text", "loading"), r.setAttribute("data-us-project", n.local.projectId), r.style.width = n.width / s + "px", r.style.height = n.height / s + "px", r.style.top = i.y / s + e.offsetTop + "px", r.style.left = i.x / s + e.offsetLeft + "px", r.style.fontSize = n.fontSize / s + "px", r.style.lineHeight = n.lineHeight / s + "px", r.style.letterSpacing = n.letterSpacing / s + "px", r.style.fontFamily = n.fontFamily, r.style.fontWeight = n.fontWeight, r.style.textAlign = n.textAlign, r.style.wordBreak = "break-word", r.style.transform = `rotateZ(${Math.round(n.rotation * 360)}deg)`, r.style.color = n.fill[0], r.style.zIndex = 2, r.innerText = n.textContent, e.appendChild(r);
 }
 let q;
 function Vt() {
@@ -5422,10 +5422,10 @@ class Ht extends ie {
     };
   }
   unpackage() {
-    return this.coords = U(this.coords), this.fill = U(this.fill), this.effects = U(this.effects), this.coords.length > 3 ? this.coordsHiRes = me(this.coords, this.size) : this.coordsHiRes = this.coords, this;
+    return this.coords = U(this.coords), this.fill = U(this.fill), this.effects = U(this.effects), this.coords.length > 3 ? this.coordsHiRes = _e(this.coords, this.size) : this.coordsHiRes = this.coords, this;
   }
   interpolatePath() {
-    this.coordsHiRes = me(this.coords, this.size);
+    this.coordsHiRes = _e(this.coords, this.size);
   }
   render() {
     const t = this.state().getScaleFactor(this.aspectRatio);
@@ -5525,10 +5525,10 @@ class Gt extends ie {
         this.local.ctx.closePath();
       }
     }
-    this.local.ctx.fillStyle = Ee(this.local.ctx, this, t), this.local.ctx.clearRect(0, 0, this.state().canvasWidth, this.state().canvasHeight), this.local.ctx.fill();
+    this.local.ctx.fillStyle = Me(this.local.ctx, this, t), this.local.ctx.clearRect(0, 0, this.state().canvasWidth, this.state().canvasHeight), this.local.ctx.fill();
   }
 }
-class ye extends Ae {
+class ve extends Ae {
   constructor(t, s, i) {
     super(t, s);
     z(this, "layerType", "effect");
@@ -5676,7 +5676,7 @@ class Xt extends ie {
     let s = t.x, i = t.y, r = 0, a = this.width, h = this.height, o = this.fontSize > 0 ? this.fontSize : 0, l = this.lineHeight > 0 ? this.lineHeight : 0, d = this.fontStyle.includes("italic") ? "italic" : "normal", c = "400";
     this.local.textBoxPos = { x: s, y: i }, this.local.ctx.clearRect(0, 0, this.state().canvasWidth, this.state().canvasHeight), this.local.ctx.font = `${d} ${c} ${o}px/${l}px ${this.fontFamily}, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial`, this.isSafari || (this.local.ctx.textAlign = this.textAlign, this.local.ctx.letterSpacing = this.letterSpacing + "px");
     const u = this.local.ctx.measureText("m").width;
-    a = Math.max(a, u), this.local.ctx.save(), this.local.ctx.translate(s + a / 2, i + h / 2), this.local.ctx.rotate(this.rotation * 360 * Math.PI / 180), this.local.ctx.translate(-(s + a / 2), -(i + h / 2)), this.textAlign === "center" && (s += a / 2), this.textAlign === "right" && (s += a), this.local.ctx.fillStyle = Ee(this.local.ctx, this, this.coords);
+    a = Math.max(a, u), this.local.ctx.save(), this.local.ctx.translate(s + a / 2, i + h / 2), this.local.ctx.rotate(this.rotation * 360 * Math.PI / 180), this.local.ctx.translate(-(s + a / 2), -(i + h / 2)), this.textAlign === "center" && (s += a / 2), this.textAlign === "right" && (s += a), this.local.ctx.fillStyle = Me(this.local.ctx, this, this.coords);
     const f = (p, _, b, w, P, T, A) => {
       let M = _.split("").reduce((R, D, V) => R + p.measureText(D).width + (V < _.length - 1 ? P : 0), 0), E;
       if (T === "center" ? E = b + (A - M) / 2 - A / 2 : E = b, T === "right")
@@ -5737,20 +5737,20 @@ const $t = Dt(() => {
     n.setVisibilityState();
   });
 }, 32);
-let ve = window.scrollY;
+let be = window.scrollY;
 function Qt(n) {
   $t();
   const e = L.filter((s) => s.getAnimatingEffects().length), t = L.filter((s) => s.rendering);
   e.length && !t.length && se(), t.length && t.forEach((s) => {
-    s.mouse.movePos.y += (window.scrollY - ve) / 2;
-  }), ve = window.scrollY;
+    s.mouse.movePos.y += (window.scrollY - be) / 2;
+  }), be = window.scrollY;
 }
 function Zt() {
   L.forEach((n) => {
-    n.isInView && n.curtain.planes.find((e) => e.uniforms.mousePos) && (Me() && n.interactivity && n.interactivity.mouse && n.interactivity.mouse.disableMobile || (n.interactivity.mouse.momentum ? (n.mouse.pos.x = xe(n.mouse.movePos.x, n.mouse.lastPos.x, n.interactivity.mouse.momentum * 2), n.mouse.pos.y = xe(n.mouse.movePos.y, n.mouse.lastPos.y, n.interactivity.mouse.momentum * 2)) : (n.mouse.pos.x = n.mouse.movePos.x, n.mouse.pos.y = n.mouse.movePos.y), n.mouse.lastPos.x = n.mouse.pos.x, n.mouse.lastPos.y = n.mouse.pos.y));
+    n.isInView && n.curtain.planes.find((e) => e.uniforms.mousePos) && (oe() && n.interactivity && n.interactivity.mouse && n.interactivity.mouse.disableMobile || (n.interactivity.mouse.momentum ? (n.mouse.pos.x = ye(n.mouse.movePos.x, n.mouse.lastPos.x, n.interactivity.mouse.momentum * 2), n.mouse.pos.y = ye(n.mouse.movePos.y, n.mouse.lastPos.y, n.interactivity.mouse.momentum * 2)) : (n.mouse.pos.x = n.mouse.movePos.x, n.mouse.pos.y = n.mouse.movePos.y), n.mouse.lastPos.x = n.mouse.pos.x, n.mouse.lastPos.y = n.mouse.pos.y));
   });
 }
-function be(n) {
+function Pe(n) {
   L.filter((e) => e.isInView).forEach((e) => {
     let t = e.curtain.container.getBoundingClientRect(), s, i;
     n.targetTouches ? (s = n.targetTouches[0].clientX, i = n.targetTouches[0].clientY) : (s = n.clientX, i = n.clientY);
@@ -5781,7 +5781,7 @@ class Jt {
         momentum: 1.1,
         disableMobile: !1
       }
-    }, this.loading = !0, this.mouse = {
+    }, this.mouse = {
       downPos: { x: 0, y: 0 },
       movePos: { x: window.innerWidth / 4, y: window.innerHeight / 4 },
       lastPos: { x: window.innerWidth / 4, y: window.innerHeight / 4 },
@@ -5877,7 +5877,7 @@ class Jt {
   }
   // Plane handling  
   initializePlanes(e) {
-    this.initializing = !0, this.handleItemPlanes(() => {
+    this.initializing = !0, oe() && window.scroll(0, 0), this.handleItemPlanes(() => {
       document.querySelectorAll(`[data-us-text="loading"][data-us-project="${this.projectId}"]`).forEach((t) => {
         t.style.color = "transparent";
       }), this.handlePlaneCreation(), e && e(this);
@@ -5940,8 +5940,8 @@ class Jt {
   }
   createPlane(e, t, s) {
     let i;
-    e.isElement ? e.compiledFragmentShaders.length ? i = this.getEffectParams(e) : e.displace === 0 && e.blendMode === "NORMAL" && !e.mask ? i = Et : i = At : i = this.getEffectParams(e, s ? s.index : null);
-    const r = new we(this.curtain, this.curtain.container, i);
+    e.isElement ? e.compiledFragmentShaders.length ? i = this.getEffectParams(e) : e.displace === 0 && e.blendMode === "NORMAL" && !e.mask ? i = Et : i = At : i = this.getEffectParams(e, s ? s.index : null), i.watchScroll = !1;
+    const r = new Te(this.curtain, this.curtain.container, i);
     return r.textures.length = 0, r.userData.id = e.local.id, r.userData.layerType = e.layerType, r.userData.type = e.type, r.setRenderOrder(t), r;
   }
   createPingPongPlane(e, t, s) {
@@ -6197,7 +6197,7 @@ function es(n) {
   );
 }
 function ts() {
-  window.addEventListener("mousemove", be), window.addEventListener("touchmove", be), window.addEventListener("scroll", Qt), window.addEventListener("routeChange", Vt), Me() || window.addEventListener("resize", qt), document.addEventListener(K, Yt, !1);
+  window.addEventListener("mousemove", Pe), window.addEventListener("touchmove", Pe), window.addEventListener("scroll", Qt), window.addEventListener("routeChange", Vt), oe() || window.addEventListener("resize", qt), document.addEventListener(K, Yt, !1);
 }
 function ss(n, e, t) {
   return $([n.offsetWidth, n.offsetHeight])[0] / n.offsetWidth, {

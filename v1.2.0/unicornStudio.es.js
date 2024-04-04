@@ -6032,7 +6032,7 @@ class Jt {
   }
   handleChildEffectPlane(e, t, s) {
     const i = "passIndex" in s ? this.getPassPlane(e, s.passIndex) : e.getPlane(), r = e.getParent();
-    let a = this.getRenderTargets()[t - 1], h = this.curtain.planes.find((f) => f.type === "PingPongPlane"), o = r.effects.filter((f) => {
+    let a = this.getRenderTargets()[t - 1], h = this.curtain.planes.find((f) => f.type === "PingPongPlane" && f.userData.id === e.local.id), o = r.effects.filter((f) => {
       if (this.history.find((m) => m.parentLayer === f))
         return this.history.find((m) => m.parentLayer === f).visible;
     }), l = o.indexOf(e.parentLayer), d = o.at(-1) === o[l], c = s.passIndex === s.length;

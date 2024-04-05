@@ -488,11 +488,11 @@ class ke {
     this.state.isActive && (this.initState(), this.gl && this.extensions.WEBGL_lose_context ? this.extensions.WEBGL_lose_context.restoreContext() : (!this.gl && !this.production ? g(this.type + ": Could not restore the context because the context is not defined") : !this.extensions.WEBGL_lose_context && !this.production && g(this.type + ": Could not restore the context because the restore context extension is not defined"), this.onError && this.onError()));
   }
   /***
-       Check that all objects and textures have been restored
+     Check that all objects and textures have been restored
   
-       returns:
-       @isRestored (bool): whether everything has been restored or not
-       ***/
+     returns:
+     @isRestored (bool): whether everything has been restored or not
+     ***/
   isContextexFullyRestored() {
     let e = !0;
     for (let t = 0; t < this.renderTargets.length; t++) {
@@ -606,24 +606,24 @@ class ke {
   }
   /*** FRAME BUFFER OBJECTS ***/
   /***
-       Called to bind or unbind a FBO
+     Called to bind or unbind a FBO
   
-       params:
-       @frameBuffer (frameBuffer): if frameBuffer is not null, bind it, unbind it otherwise
-       @cancelClear (bool / undefined): if we should cancel clearing the frame buffer (typically on init & resize)
-       ***/
+     params:
+     @frameBuffer (frameBuffer): if frameBuffer is not null, bind it, unbind it otherwise
+     @cancelClear (bool / undefined): if we should cancel clearing the frame buffer (typically on init & resize)
+     ***/
   bindFrameBuffer(e, t) {
     let s = null;
     e ? (s = e.index, s !== this.state.frameBufferID && (this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, e._frameBuffer), this.gl.viewport(0, 0, e._size.width, e._size.height), e._shouldClear && !t && this.clear())) : this.state.frameBufferID !== null && (this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, null), this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight)), this.state.frameBufferID = s;
   }
   /*** DEPTH ***/
   /***
-       Called to set whether the renderer will handle depth test or not
-       Depth test is enabled by default
+     Called to set whether the renderer will handle depth test or not
+     Depth test is enabled by default
   
-       params:
-       @setDepth (boolean): if we should enable or disable the depth test
-       ***/
+     params:
+     @setDepth (boolean): if we should enable or disable the depth test
+     ***/
   setDepthTest(e) {
     e && !this.state.depthTest ? (this.state.depthTest = e, this.gl.enable(this.gl.DEPTH_TEST)) : !e && this.state.depthTest && (this.state.depthTest = e, this.gl.disable(this.gl.DEPTH_TEST));
   }
@@ -637,12 +637,12 @@ class ke {
   }
   /*** BLENDING ***/
   /***
-       Whether we should enable or disable the blending state
-       Used to draw transparent planes
+     Whether we should enable or disable the blending state
+     Used to draw transparent planes
   
-       params:
-       @enableBlending (boolean): if we should enable or disable the blending (default to false)
-       ***/
+     params:
+     @enableBlending (boolean): if we should enable or disable the blending (default to false)
+     ***/
   setBlending(e = !1) {
     e && !this.state.blending ? (this.state.blending = e, this.gl.enable(this.gl.BLEND)) : !e && this.state.blending && (this.state.blending = e, this.gl.disable(this.gl.BLEND));
   }
@@ -654,11 +654,11 @@ class ke {
   }
   /*** FACE CULLING ***/
   /***
-       Called to set whether we should cull an object face or not
+     Called to set whether we should cull an object face or not
   
-       params:
-       @cullFace (boolean): what face we should cull
-       ***/
+     params:
+     @cullFace (boolean): what face we should cull
+     ***/
   setFaceCulling(e) {
     if (this.state.cullFace !== e)
       if (this.state.cullFace = e, e === "none")
@@ -669,31 +669,31 @@ class ke {
       }
   }
   /***
-       Tell WebGL to use the specified program if it's not already in use
+     Tell WebGL to use the specified program if it's not already in use
   
-       params:
-       @program (object): a program object
-       ***/
+     params:
+     @program (object): a program object
+     ***/
   useProgram(e) {
     (this.state.currentProgramID === null || this.state.currentProgramID !== e.id) && (this.gl.useProgram(e.program), this.state.currentProgramID = e.id);
   }
   /*** PLANES ***/
   /***
-       Removes a Plane element (that has already been disposed) from the scene and the planes array
+     Removes a Plane element (that has already been disposed) from the scene and the planes array
   
-       params:
-       @plane (Plane object): the plane to remove
-       ***/
+     params:
+     @plane (Plane object): the plane to remove
+     ***/
   removePlane(e) {
     this.gl && (this.planes = this.planes.filter((t) => t.uuid !== e.uuid), this.scene.removePlane(e), e = null, this.gl && this.clear(), this.onSceneChange());
   }
   /*** POST PROCESSING ***/
   /***
-       Completely remove a RenderTarget element
+     Completely remove a RenderTarget element
   
-       params:
-       @renderTarget (RenderTarget object): the render target to remove
-       ***/
+     params:
+     @renderTarget (RenderTarget object): the render target to remove
+     ***/
   removeRenderTarget(e) {
     if (!this.gl)
       return;
@@ -707,11 +707,11 @@ class ke {
   }
   /*** SHADER PASSES ***/
   /***
-       Removes a ShaderPass element (that has already been disposed) from the scene and the shaderPasses array
+     Removes a ShaderPass element (that has already been disposed) from the scene and the shaderPasses array
   
-       params:
-       @shaderPass (ShaderPass object): the shader pass to remove
-       ***/
+     params:
+     @shaderPass (ShaderPass object): the shader pass to remove
+     ***/
   removeShaderPass(e) {
     this.gl && (this.shaderPasses = this.shaderPasses.filter((t) => t.uuid !== e.uuid), this.scene.removeShaderPass(e), e = null, this.gl && this.clear(), this.onSceneChange());
   }
@@ -833,13 +833,13 @@ class Ue {
     this.type = "Curtains", this._autoResize = l, this._autoRender = d, this._watchScroll = c, this.pixelRatio = u, f = isNaN(f) ? 1 : parseFloat(f), this._renderingScale = Math.max(0.25, Math.min(1, f)), this.premultipliedAlpha = s, this.alpha = t, this.antialias = i, this.depth = r, this.failIfMajorPerformanceCaveat = a, this.preserveDrawingBuffer = h, this.stencil = o, this.production = m, this.errors = !1, e ? this.setContainer(e) : this.production || g(this.type + ": no container provided in the initial parameters. Use setContainer() method to set one later and initialize the WebGL context");
   }
   /***
-       Set up our Curtains container and start initializing everything
-       Called on Curtains instancing if a params container has been provided, could be call afterwards else
-       Useful with JS frameworks to init our Curtains class globally and then set the container in a canvas component afterwards to fully instantiate everything
+     Set up our Curtains container and start initializing everything
+     Called on Curtains instancing if a params container has been provided, could be call afterwards else
+     Useful with JS frameworks to init our Curtains class globally and then set the container in a canvas component afterwards to fully instantiate everything
   
-       params:
-       @container (HTML element or string): the container HTML element or ID that will hold our canvas
-       ***/
+     params:
+     @container (HTML element or string): the container HTML element or ID that will hold our canvas
+     ***/
   setContainer(e) {
     if (e)
       if (typeof e == "string")
@@ -922,15 +922,15 @@ class Ue {
     this.renderer.needRender();
   }
   /***
-       Executes a callback on next frame
+     Executes a callback on next frame
   
-       params:
-       @callback (function): callback to execute on next frame
-       @keep (bool): whether to keep calling that callback on each rendering call or not (act as a setInterval). Default to false
+     params:
+     @callback (function): callback to execute on next frame
+     @keep (bool): whether to keep calling that callback on each rendering call or not (act as a setInterval). Default to false
   
-       returns:
-       @queueItem: the queue item. Allows to keep a track of it and set its keep property to false when needed
-       ***/
+     returns:
+     @queueItem: the queue item. Allows to keep a track of it and set its keep property to false when needed
+     ***/
   nextRender(e, t = !1) {
     return this.renderer.nextRender.add(e, t);
   }
@@ -953,11 +953,11 @@ class Ue {
     this.renderer && this.renderer.clearColor();
   }
   /***
-       Check whether the created context is WebGL2
+     Check whether the created context is WebGL2
   
-       return:
-       @isWebGL2 (bool): whether the created WebGL context is 2.0 or not
-       ***/
+     return:
+     @isWebGL2 (bool): whether the created WebGL context is 2.0 or not
+     ***/
   isWebGL2() {
     return this.gl ? this.renderer._isWebGL2 : !1;
   }
@@ -988,20 +988,20 @@ class Ue {
     this.renderer.setSize(), this._scrollManager.shouldWatch && (this._scrollManager.xOffset = window.pageXOffset, this._scrollManager.yOffset = window.pageYOffset);
   }
   /***
-       Useful to get our container bounding rectangle without triggering a reflow/layout
+     Useful to get our container bounding rectangle without triggering a reflow/layout
   
-       returns :
-       @boundingRectangle (object): an object containing our container bounding rectangle (width, height, top and left properties)
-       ***/
+     returns :
+     @boundingRectangle (object): an object containing our container bounding rectangle (width, height, top and left properties)
+     ***/
   getBoundingRect() {
     return this.renderer._boundingRect;
   }
   /***
-       Resize our container and the renderer
+     Resize our container and the renderer
   
-       params:
-       @triggerCallback (bool): Whether we should trigger onAfterResize callback
-       ***/
+     params:
+     @triggerCallback (bool): Whether we should trigger onAfterResize callback
+     ***/
   resize(e) {
     this.gl && (this._setSize(), this.renderer.resize(), this.nextRender(() => {
       this._onAfterResizeCallback && e && this._onAfterResizeCallback();
@@ -1034,23 +1034,23 @@ class Ue {
     this.renderer.needRender(), this._onScrollCallback && this._onScrollCallback();
   }
   /***
-       Updates the scroll manager X and Y scroll values as well as last X and Y deltas
-       Internally called by the scroll handler if at least one plane is watching the scroll
-       Could be called externally as well if the user wants to handle the scroll by himself
+     Updates the scroll manager X and Y scroll values as well as last X and Y deltas
+     Internally called by the scroll handler if at least one plane is watching the scroll
+     Could be called externally as well if the user wants to handle the scroll by himself
   
-       params:
-       @x (float): scroll value along X axis
-       @y (float): scroll value along Y axis
-       ***/
+     params:
+     @x (float): scroll value along X axis
+     @y (float): scroll value along Y axis
+     ***/
   updateScrollValues(e, t) {
     this._scrollManager.updateScrollValues(e, t);
   }
   /***
-       Returns last delta scroll values
+     Returns last delta scroll values
   
-       returns:
-       @delta (object): an object containing X and Y last delta values
-       ***/
+     returns:
+     @delta (object): an object containing X and Y last delta values
+     ***/
   getScrollDeltas() {
     return {
       x: this._scrollManager.lastXDelta,
@@ -1058,11 +1058,11 @@ class Ue {
     };
   }
   /***
-       Returns last window scroll values
+     Returns last window scroll values
   
-       returns:
-       @scrollValues (object): an object containing X and Y last scroll values
-       ***/
+     returns:
+     @scrollValues (object): an object containing X and Y last scroll values
+     ***/
   getScrollValues() {
     return {
       x: this._scrollManager.xOffset,
@@ -1085,26 +1085,26 @@ class Ue {
   }
   /*** EVENTS ***/
   /***
-       This is called each time our container has been resized
+     This is called each time our container has been resized
   
-       params :
-       @callback (function) : a function to execute
+     params :
+     @callback (function) : a function to execute
   
-       returns :
-       @this: our Curtains element to handle chaining
-       ***/
+     returns :
+     @this: our Curtains element to handle chaining
+     ***/
   onAfterResize(e) {
     return e && (this._onAfterResizeCallback = e), this;
   }
   /***
-       This is called when an error has been detected
+     This is called when an error has been detected
   
-       params:
-       @callback (function): a function to execute
+     params:
+     @callback (function): a function to execute
   
-       returns:
-       @this: our Curtains element to handle chaining
-       ***/
+     returns:
+     @this: our Curtains element to handle chaining
+     ***/
   onError(e) {
     return e && (this._onErrorCallback = e), this;
   }
@@ -1117,14 +1117,14 @@ class Ue {
     }, 0);
   }
   /***
-       This is called when the WebGL context has been successfully created
+     This is called when the WebGL context has been successfully created
   
-       params:
-       @callback (function): a function to execute
+     params:
+     @callback (function): a function to execute
   
-       returns:
-       @this: our Curtains element to handle chaining
-       ***/
+     returns:
+     @this: our Curtains element to handle chaining
+     ***/
   onSuccess(e) {
     return e && (this._onSuccessCallback = e), this;
   }
@@ -1137,14 +1137,14 @@ class Ue {
     }, 0);
   }
   /***
-       This is called once our context has been lost
+     This is called once our context has been lost
   
-       params:
-       @callback (function): a function to execute
+     params:
+     @callback (function): a function to execute
   
-       returns:
-       @this: our Curtains element to handle chaining
-       ***/
+     returns:
+     @this: our Curtains element to handle chaining
+     ***/
   onContextLost(e) {
     return e && (this._onContextLostCallback = e), this;
   }
@@ -1155,14 +1155,14 @@ class Ue {
     this._onContextLostCallback && this._onContextLostCallback();
   }
   /***
-       This is called once our context has been restored
+     This is called once our context has been restored
   
-       params:
-       @callback (function): a function to execute
+     params:
+     @callback (function): a function to execute
   
-       returns:
-       @this: our Curtains element to handle chaining
-       ***/
+     returns:
+     @this: our Curtains element to handle chaining
+     ***/
   onContextRestored(e) {
     return e && (this._onContextRestoredCallback = e), this;
   }
@@ -1173,26 +1173,26 @@ class Ue {
     this._onContextRestoredCallback && this._onContextRestoredCallback();
   }
   /***
-       This is called once at each request animation frame call
+     This is called once at each request animation frame call
   
-       params:
-       @callback (function): a function to execute
+     params:
+     @callback (function): a function to execute
   
-       returns:
-       @this: our Curtains element to handle chaining
-       ***/
+     returns:
+     @this: our Curtains element to handle chaining
+     ***/
   onRender(e) {
     return e && (this._onRenderCallback = e), this;
   }
   /***
-       This is called each time window is scrolled and if our scrollManager is active
+     This is called each time window is scrolled and if our scrollManager is active
   
-       params :
-       @callback (function) : a function to execute
+     params :
+     @callback (function) : a function to execute
   
-       returns :
-       @this: our Curtains element to handle chaining
-       ***/
+     returns :
+     @this: our Curtains element to handle chaining
+     ***/
   onScroll(e) {
     return e && (this._onScrollCallback = e), this;
   }
@@ -5821,6 +5821,7 @@ class Jt {
     return this.history.filter((e) => j(e) && e.visible);
   }
   createCurtains() {
+    oe() && window.scroll(0, 0);
     const e = new Ue({
       container: this.element,
       premultipliedAlpha: !0,
@@ -5877,7 +5878,7 @@ class Jt {
   }
   // Plane handling  
   initializePlanes(e) {
-    this.initializing = !0, oe() && window.scroll(0, 0), this.handleItemPlanes(() => {
+    this.initializing = !0, this.handleItemPlanes(() => {
       document.querySelectorAll(`[data-us-text="loading"][data-us-project="${this.projectId}"]`).forEach((t) => {
         t.style.color = "transparent";
       }), this.handlePlaneCreation(), e && e(this);
@@ -5954,7 +5955,7 @@ class Jt {
   }
   createEffectPlane(e, t, s) {
     const i = this.createPlane(e, t, s), r = e.getParent();
-    i && (s && (i.userData.passIndex = s.index, i.userData.downSample = s.downSample, i.userData.length = e.data.passes.length, Object.entries(s).forEach(([a, h]) => {
+    i && (s && (i.userData.passIndex = s.index, i.userData.downSample = s.downSample, i.userData.includeBg = s.includeBg, i.userData.length = e.data.passes.length, Object.entries(s).forEach(([a, h]) => {
       i.uniforms[a] && (i.uniforms[a].value = h);
     })), this.setInitialEffectPlaneUniforms(i, e, r, s), i.onReady(() => {
       i.userData.isReady = !0;
@@ -6039,6 +6040,9 @@ class Jt {
     h && e.type === "mouse" && i.createTexture({
       sampler: "uPingPongTexture",
       fromTexture: h.getTexture()
+    }), i.userData.includeBg && i.loadCanvas(r.local.canvas, {
+      premultipliedAlpha: !0,
+      sampler: "uBgTexture"
     }), i && a && (l || s.passIndex > 0) ? (i.createTexture({
       sampler: "uTexture",
       premultipliedAlpha: !0,
@@ -6084,7 +6088,8 @@ class Jt {
         index: r + 1,
         length: s.passes.length + 1,
         downSample: i.downSample,
-        [i.prop]: i.value
+        [i.prop]: i.value,
+        includeBg: i.includeBg
       });
     })) : (this.createEffectPlane(e, t), e.type === "mouse" && this.createPingPongPlane(e, t));
   }

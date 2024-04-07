@@ -5965,9 +5965,7 @@ class Jt {
     const s = this.createPlane(e, t);
     s && s.onReady(() => {
       s.userData.isReady = !0;
-    }).onRender(() => {
-      s.uniforms.mousePos.value.x = this.mouse.pos.x / (this.element.offsetWidth * 0.5), s.uniforms.mousePos.value.y = 1 - this.mouse.pos.y / (this.element.offsetHeight * 0.5), s.uniforms.resolution.value.x = this.curtain.canvas.width, s.uniforms.resolution.value.y = this.curtain.canvas.height, !s.userData.isReady && !e.compiledFragmentShaders.length && (s.uniforms.opacity.value = e.visible ? e.opacity : 0, s.uniforms.trackMouse.value = e.trackMouse || 0, s.uniforms.axisTilt.value = e.axisTilt || 0, s.renderOrder === 0 ? s.uniforms.sampleBg.value = 0 : s.uniforms.sampleBg.value = 1, s.uniforms.displace && (s.uniforms.displace.value = e.displace, s.uniforms.bgDisplace.value = e.bgDisplace, s.uniforms.dispersion.value = e.dispersion), s.uniforms.blendMode && (s.uniforms.blendMode.value = Object.keys(It).indexOf(e.blendMode)), s.uniforms.mask && "mask" in e && (s.uniforms.mask.value = e.mask));
-    });
+    }).onRender(() => this.setElementPlaneUniforms(s, e));
   }
   handleEffectPlane(e, t, s) {
     const i = "passIndex" in s ? this.getPassPlane(e, s.passIndex) : e.getPlane();
@@ -6137,6 +6135,9 @@ class Jt {
     t.states.appear.forEach((i) => {
       i.updateEffect(e, s);
     });
+  }
+  setElementPlaneUniforms(e, t) {
+    e.uniforms.mousePos.value.x = this.mouse.pos.x / (this.element.offsetWidth * 0.5), e.uniforms.mousePos.value.y = 1 - this.mouse.pos.y / (this.element.offsetHeight * 0.5), e.uniforms.resolution.value.x = this.curtain.canvas.width, e.uniforms.resolution.value.y = this.curtain.canvas.height, !e.userData.isReady && !t.compiledFragmentShaders.length && (e.uniforms.opacity.value = t.visible ? t.opacity : 0, e.uniforms.trackMouse.value = t.trackMouse || 0, e.uniforms.axisTilt.value = t.axisTilt || 0, e.renderOrder === 0 ? e.uniforms.sampleBg.value = 0 : e.uniforms.sampleBg.value = 1, e.uniforms.displace && (e.uniforms.displace.value = t.displace, e.uniforms.bgDisplace.value = t.bgDisplace, e.uniforms.dispersion.value = t.dispersion), e.uniforms.blendMode && (e.uniforms.blendMode.value = Object.keys(It).indexOf(t.blendMode)), e.uniforms.mask && "mask" in t && (e.uniforms.mask.value = t.mask));
   }
   setEffectPlaneUniforms(e, t) {
     if (t.animating && e.uniforms.time && (e.uniforms.time.value += (t.speed || 1) * 60 / this.fps), this.handleStateEffects(e, t), e.uniforms.mousePos && (e.uniforms.mousePos.value.x = this.mouse.pos.x / (this.element.offsetWidth * 0.5), e.uniforms.mousePos.value.y = 1 - this.mouse.pos.y / (this.element.offsetHeight * 0.5)), e.uniforms.previousMousePos && this.mouse.trail.length > 3) {

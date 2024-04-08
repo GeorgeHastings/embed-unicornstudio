@@ -1425,13 +1425,13 @@ void main() {
     
     gl_Position = vec4(aVertexPosition, 1.0);
 }
-`, qe = Ye.replace(/\n/g, ""), $e = J + ee + `
+`, qe = Ye.replace(/\n/g, ""), Qe = J + ee + `
 uniform sampler2D uRenderTexture;
 
 void main() {
     gl_FragColor = texture2D(uRenderTexture, vTextureCoord);
 }
-`, Qe = $e.replace(/\n/g, "");
+`, $e = Qe.replace(/\n/g, "");
 let fe = 0;
 class pe {
   constructor(e, {
@@ -1445,7 +1445,7 @@ class pe {
       O(this.type + ": Renderer WebGL context is undefined", e);
       return;
     }
-    this.renderer = e, this.gl = this.renderer.gl, this.parent = t, this.defaultVsCode = this.parent.type === "Plane" ? Ge : qe, this.defaultFsCode = this.parent.type === "Plane" ? Xe : Qe, s ? this.vsCode = s : (!this.renderer.production && this.parent.type === "Plane" && g(this.parent.type + ": No vertex shader provided, will use a default one"), this.vsCode = this.defaultVsCode), i ? this.fsCode = i : (this.renderer.production || g(this.parent.type + ": No fragment shader provided, will use a default one"), this.fsCode = this.defaultFsCode), this.compiled = !0, this.setupProgram();
+    this.renderer = e, this.gl = this.renderer.gl, this.parent = t, this.defaultVsCode = this.parent.type === "Plane" ? Ge : qe, this.defaultFsCode = this.parent.type === "Plane" ? Xe : $e, s ? this.vsCode = s : (!this.renderer.production && this.parent.type === "Plane" && g(this.parent.type + ": No vertex shader provided, will use a default one"), this.vsCode = this.defaultVsCode), i ? this.fsCode = i : (this.renderer.production || g(this.parent.type + ": No fragment shader provided, will use a default one"), this.fsCode = this.defaultFsCode), this.compiled = !0, this.setupProgram();
   }
   /***
        Compile our WebGL shaders based on our written shaders
@@ -4528,7 +4528,7 @@ class yt extends Te {
     this.target = null, this.renderer.bindFrameBuffer(null), this.writePass && (this.writePass.remove(), this.writePass = null), this.readPass && (this.readPass.remove(), this.readPass = null), super.remove();
   }
 }
-const Q = (n, e, t) => n * (1 - t) + e * t, Re = (n, e, t, s) => Math.sqrt(Math.pow(n - t, 2) + Math.pow(e - s, 2)), vt = (n, e, t, s) => (s - t) / (e - n);
+const $ = (n, e, t) => n * (1 - t) + e * t, Re = (n, e, t, s) => Math.sqrt(Math.pow(n - t, 2) + Math.pow(e - s, 2)), vt = (n, e, t, s) => (s - t) / (e - n);
 function bt(n) {
   return n.map((e, t) => t > 0 ? Math.sqrt(
     Math.pow(e[0] - n[t - 1][0], 2) + Math.pow(e[1] - n[t - 1][1], 2)
@@ -4545,11 +4545,11 @@ const Pt = (n, e) => {
       n[r - 1][1]
     );
     a <= e / 2 ? i < e / 2 ? i += a : (t.push([
-      Q(n[r - 1][0], n[r][0], 0.5),
-      Q(n[r - 1][1], n[r][1], 0.5)
+      $(n[r - 1][0], n[r][0], 0.5),
+      $(n[r - 1][1], n[r][1], 0.5)
     ]), i = 0) : t.push([
-      Q(n[r - 1][0], n[r][0], 0.5),
-      Q(n[r - 1][1], n[r][1], 0.5)
+      $(n[r - 1][0], n[r][0], 0.5),
+      $(n[r - 1][1], n[r][1], 0.5)
     ]);
   }
   return t.push(n[s]), t;
@@ -5137,7 +5137,7 @@ function Lt(n) {
     Math.round(r + t.y)
   ]), s;
 }
-function $(n, e) {
+function Q(n, e) {
   const t = n[0] / n[1], s = Math.sqrt(t * (3e5 * (e || 1)));
   return [s, s / t];
 }
@@ -5199,7 +5199,7 @@ function Ft(n, e) {
   }
 }
 function Ut(n, e) {
-  const s = $([e.offsetWidth || n.width, e.offsetHeight || n.height])[0] / e.offsetWidth, i = n.getPositionOffset(), r = document.createElement("div");
+  const s = Q([e.offsetWidth || n.width, e.offsetHeight || n.height])[0] / e.offsetWidth, i = n.getPositionOffset(), r = document.createElement("div");
   r.setAttribute("data-us-text", "loading"), r.setAttribute("data-us-project", n.local.projectId), r.style.width = n.width / s + "px", r.style.height = n.height / s + "px", r.style.top = i.y / s + e.offsetTop + "px", r.style.left = i.x / s + e.offsetLeft + "px", r.style.fontSize = n.fontSize / s + "px", r.style.lineHeight = n.lineHeight / s + "px", r.style.letterSpacing = n.letterSpacing / s + "px", r.style.fontFamily = n.fontFamily, r.style.fontWeight = n.fontWeight, r.style.textAlign = n.textAlign, r.style.wordBreak = "break-word", r.style.transform = `rotateZ(${Math.round(n.rotation * 360)}deg)`, r.style.color = n.fill[0], r.style.zIndex = 2, r.innerText = n.textContent, e.appendChild(r);
 }
 let q;
@@ -5370,18 +5370,18 @@ let ie = class extends Ae {
   createLocalCanvas() {
     const t = this.state(), s = document.createElement("canvas"), i = +t.dpi * t.scale;
     s.width = t.element.offsetWidth * i, s.height = t.element.offsetHeight * i;
-    const a = $([t.element.offsetWidth, t.element.offsetHeight])[0] / t.element.offsetWidth, h = s.getContext("2d");
+    const a = Q([t.element.offsetWidth, t.element.offsetHeight])[0] / t.element.offsetWidth, h = s.getContext("2d");
     h.scale(i / a, i / a), this.local.canvas = s, this.local.ctx = h;
   }
   resize() {
     const t = this.state();
     if (this.local.canvas) {
-      const s = +t.dpi * t.scale, r = $([t.element.offsetWidth, t.element.offsetHeight])[0] / t.element.offsetWidth;
+      const s = +t.dpi * t.scale, r = Q([t.element.offsetWidth, t.element.offsetHeight])[0] / t.element.offsetWidth;
       this.local.canvas.width = t.canvasWidth, this.local.canvas.height = t.canvasHeight, this.local.ctx.scale(s / r, s / r);
     }
   }
   getPositionOffset() {
-    const t = this.state(), s = t.canvasWidth / t.canvasHeight, i = this.aspectRatio / s, r = t.canvasWidth * Math.sqrt(i), a = t.canvasHeight / Math.sqrt(i), o = $([t.element.offsetWidth, t.element.offsetHeight])[0] / t.element.offsetWidth;
+    const t = this.state(), s = t.canvasWidth / t.canvasHeight, i = this.aspectRatio / s, r = t.canvasWidth * Math.sqrt(i), a = t.canvasHeight / Math.sqrt(i), o = Q([t.element.offsetWidth, t.element.offsetHeight])[0] / t.element.offsetWidth;
     let l = (t.canvasWidth * o - r * o) / (t.dpi * 2), d = (t.canvasHeight * o - a * o) / (t.dpi * 2);
     this.layerType === "image" && (l += r * o / (t.dpi * 2), d += a * o / (t.dpi * 2));
     let c = this.translateX + l, u = this.translateY + d;
@@ -5732,14 +5732,14 @@ function qt() {
     n.initialized && n.isInView && n.resize();
   });
 }
-const $t = Dt(() => {
+const Qt = Dt(() => {
   L.forEach((n) => {
     n.setVisibilityState();
   });
 }, 32);
 let be = window.scrollY;
-function Qt(n) {
-  $t();
+function $t(n) {
+  Qt();
   const e = L.filter((s) => s.getAnimatingEffects().length), t = L.filter((s) => s.rendering);
   e.length && !t.length && se(), t.length && t.forEach((s) => {
     s.mouse.movePos.y += (window.scrollY - be) / 2;
@@ -6203,10 +6203,10 @@ function es(n) {
   );
 }
 function ts() {
-  window.addEventListener("mousemove", Pe), window.addEventListener("touchmove", Pe), window.addEventListener("scroll", Qt), window.addEventListener("routeChange", Vt), oe() || window.addEventListener("resize", qt), document.addEventListener(K, Yt, !1);
+  window.addEventListener("mousemove", Pe), window.addEventListener("touchmove", Pe), window.addEventListener("scroll", $t), window.addEventListener("routeChange", Vt), oe() || window.addEventListener("resize", qt), document.addEventListener(K, Yt, !1);
 }
 function ss(n, e, t) {
-  return $([n.offsetWidth, n.offsetHeight])[0] / n.offsetWidth, {
+  return Q([n.offsetWidth, n.offsetHeight])[0] / n.offsetWidth, {
     canvasWidth: n.offsetWidth * t,
     canvasHeight: n.offsetHeight * t,
     scale: e,
@@ -6214,15 +6214,18 @@ function ss(n, e, t) {
     element: n
   };
 }
-function hs() {
+function os() {
   L.forEach((n) => {
     n.destroy();
   }), L.length = 0;
 }
-function is(n) {
+function is(n, e) {
+  return fetch(`https://storage.googleapis.com/unicornstudio-production/embeds/${n}${e ? "?" + e : ""}`).then((t) => t.json()).then((t) => t).catch((t) => console.error("Error fetching data:", t));
+}
+function rs(n) {
   let e = n.projectId.split("?")[0], t = n.projectId.split("?")[1];
   return new Promise((s, i) => {
-    fetch(`https://firebasestorage.googleapis.com/v0/b/embeds.unicorn.studio/o/${e}?alt=media${t ? `&update=${t}` : ""}`).then((r) => r.json()).then((r) => {
+    is(e, t).then((r) => {
       const a = r.options || {}, h = es(n.element) ? n.element : document.getElementById(n.elementId);
       if (!h) {
         i(new Error(`Couldn't find an element with id '${n.elementId}' on the page.`));
@@ -6245,12 +6248,12 @@ function is(n) {
     });
   });
 }
-function os() {
+function ls() {
   return new Promise((n, e) => {
     const t = document.querySelectorAll("[data-us-project]");
     [...t].filter((s) => !s.getAttribute("data-us-initialized")).forEach((s, i) => {
       const r = s.getAttribute("data-us-project"), a = s.getAttribute("data-us-dpi"), h = s.getAttribute("data-us-scale"), o = s.getAttribute("data-us-fps"), l = s.getAttribute("data-us-disableMobile");
-      s.setAttribute("data-us-initialized", !0), is({
+      s.setAttribute("data-us-initialized", !0), rs({
         projectId: r,
         element: s,
         dpi: +a,
@@ -6269,7 +6272,7 @@ function os() {
 }
 ts();
 export {
-  is as addScene,
-  hs as destroy,
-  os as init
+  rs as addScene,
+  os as destroy,
+  ls as init
 };

@@ -6223,7 +6223,7 @@ function os() {
 }
 function is(n, e, t) {
   let s;
-  return console.log(t), t ? s = t : s = `https://storage.googleapis.com/unicornstudio-production/embeds/${n}${e ? "?" + e : ""}`, fetch(s).then((i) => i.json()).then((i) => i).catch((i) => console.error("Error fetching data:", i));
+  return t ? s = t : s = `https://storage.googleapis.com/unicornstudio-production/embeds/${n}${e ? "?" + e : ""}`, fetch(s).then((i) => i.json()).then((i) => i).catch((i) => console.error("Error fetching data:", i));
 }
 function rs(n) {
   let e = n.projectId ? n.projectId.split("?")[0] : null, t = n.projectId ? n.projectId.split("?")[1] : null;

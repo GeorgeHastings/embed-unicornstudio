@@ -15,10 +15,11 @@ import * as UnicornStudio from './path/to/unicornStudio.umd.js'
 ## Initialize your scene:
 
 ### Inline
-Any element with `data-us-project` will get initialized by calling `UnicornStudio.init()`.
+Any element with `data-us-project` will get initialized by calling `UnicornStudio.init()`. If you're hosting your own exported JSON file, use `data-us-project-src` to point to its location. If you host your own JSON, remembder you'll need to update this file when you make changes to your scene in Unicorn.studio.
 ```html
 <div class="unicorn-embed"
   data-us-project="YOUR_PROJECT_EMBED_ID"
+  data-us-project-src="path/to/your/PROJECT_ID.json"
   data-us-scale="1"
   data-us-dpi="1.5"
   data-us-disableMobile="true"
@@ -42,10 +43,15 @@ You can add a scene dynamically during or after pageload.
     scale: 1, // rendering scale, use smaller values for performance boost (0.25-1) [optional]
     dpi: 1, // pixel ratio [optional]
     projectId: 'YOUR_PROJECT_EMBED_ID', // the id string for your embed (get this from "embed" export)
+    filePath: 'path/to/your/PROJECT_ID.json', // if youre hosting your own exported json code, point to it here
     interactivity: { // [optional]
       mouse: {
         disableMobile: true, // disable touch movement on mobile
         momentum: 1.1 // mouse movement momentum
+      },
+      scroll: {
+        disableMobile: true, // disable scroll effects on mobile
+        momentum: 1.1 // scroll momentum
       }
     }
   }).then(scene => {

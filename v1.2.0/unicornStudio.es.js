@@ -4704,11 +4704,16 @@ void main() {
   vec2 uv = vTextureCoord;
   vec2 pos = mix(vec2(0), (uMousePos - 0.5), uTrackMouse);
   uv = perspectiveUV(uv) - pos;
+
   vec4 color = texture(uTexture, uv);
+
+  color = color.a > 0.00001 ? vec4(color.rgb / color.a, color.a) : color;
+
   vec4 background = uSampleBg == 1 ? texture(uBgTexture, vTextureCoord) : vec4(0);
   
   color = mix(background, color, color.a * uOpacity);
-  fragColor = color/(color.a + 0.0000000000001);
+  
+  fragColor = color;
 }
 `, Mt = {
   fragmentShader: Et,
@@ -4848,9 +4853,10 @@ void main() {
   vec2 pos = mix(vec2(0), (uMousePos - 0.5), uTrackMouse);
   uv = perspectiveUV(uv) - pos;
   vec4 maskColor = texture(uMaskTexture, vTextureCoord);
-  vec4 base = texture(uTexture, uv);
   vec4 background = uSampleBg == 1 ? texture(uBgTexture, vTextureCoord) : vec4(0);
-  vec4 color = base;
+  vec4 color = texture(uTexture, uv);
+
+  //color = vec4(color.rgb, color.a * step(0.5, color.a));
 
   if (uMask == 1.) {
     color = maskColor * color.a;
@@ -4864,12 +4870,14 @@ void main() {
     }
   }
 
+  color = color.a > 0.01 ? vec4(color.rgb / color.a, color.a) : color;
+
   if (uBlendMode > 0) {
-    color.rgb = blend(uBlendMode, color.rgb, background.rgb) * color.a;
+    color.rgb = blend(uBlendMode, color.rgb, background.rgb);
   }
 
   color = mix(background, color, color.a * uOpacity);
-  fragColor = color.a > 0.0000001 ? (color / color.a) : color;
+  fragColor = color;
 }
 `, Ct = {
   fragmentShader: At,
@@ -5145,7 +5153,7 @@ function oe() {
   return /Android|iPhone/i.test(navigator.userAgent);
 }
 function X(n) {
-  const e = n.trackMouse && n.trackMouse > 0;
+  const e = "trackMouse" in n && n.trackMouse > 0 || "axisTilt" in n && n.axisTilt > 0;
   let t = n.layerType === "effect" && n.compiledFragmentShaders && n.compiledFragmentShaders.filter((i) => i.match(/uMousePos/g) && i.match(/uMousePos/g).length > 1).length, s = n.layerType === "effect" && n.animating;
   return e || t || s;
 }
@@ -5924,7 +5932,11 @@ class Jt {
         value: 0
       }
     };
-    e.states && e.states.appear.length && e.states.appear.forEach((h) => {
+    e.isElement && (i.sampleBg = {
+      name: "uSampleBg",
+      type: "1i",
+      value: 1
+    }), e.states && e.states.appear.length && e.states.appear.forEach((h) => {
       i[h.prop] || (i[h.prop] = h.uniformData, i[h.prop].value = h.value);
     });
     let r = e.compiledFragmentShaders[t] || e.compiledFragmentShaders[0], a = e.compiledVertexShaders[t] || e.compiledVertexShaders[0];
@@ -6139,7 +6151,7 @@ class Jt {
     });
   }
   setElementPlaneUniforms(e, t) {
-    e.uniforms.mousePos.value.x = this.mouse.pos.x / (this.element.offsetWidth * 0.5), e.uniforms.mousePos.value.y = 1 - this.mouse.pos.y / (this.element.offsetHeight * 0.5), e.uniforms.resolution.value.x = this.curtain.canvas.width, e.uniforms.resolution.value.y = this.curtain.canvas.height, !e.userData.isReady && !t.compiledFragmentShaders.length && (e.uniforms.opacity.value = t.visible ? t.opacity : 0, e.uniforms.trackMouse.value = t.trackMouse || 0, e.uniforms.axisTilt.value = t.axisTilt || 0, e.renderOrder === 0 ? e.uniforms.sampleBg.value = 0 : e.uniforms.sampleBg.value = 1, e.uniforms.displace && (e.uniforms.displace.value = t.displace, e.uniforms.bgDisplace.value = t.bgDisplace, e.uniforms.dispersion.value = t.dispersion), e.uniforms.blendMode && (e.uniforms.blendMode.value = Object.keys(Dt).indexOf(t.blendMode)), e.uniforms.mask && "mask" in t && (e.uniforms.mask.value = t.mask));
+    e.uniforms.mousePos.value.x = this.mouse.pos.x / (this.element.offsetWidth * 0.5), e.uniforms.mousePos.value.y = 1 - this.mouse.pos.y / (this.element.offsetHeight * 0.5), e.uniforms.resolution.value.x = this.curtain.canvas.width, e.uniforms.resolution.value.y = this.curtain.canvas.height, e.uniforms.sampleBg && (e.renderOrder === 0 ? e.uniforms.sampleBg.value = 0 : e.uniforms.sampleBg.value = 1), !e.userData.isReady && !t.compiledFragmentShaders.length && (e.uniforms.opacity.value = t.visible ? t.opacity : 0, e.uniforms.trackMouse.value = t.trackMouse || 0, e.uniforms.displace && (e.uniforms.displace.value = t.displace, e.uniforms.bgDisplace.value = t.bgDisplace, e.uniforms.dispersion.value = t.dispersion), e.uniforms.blendMode && (e.uniforms.blendMode.value = Object.keys(Dt).indexOf(t.blendMode)), e.uniforms.mask && "mask" in t && (e.uniforms.mask.value = t.mask));
   }
   setEffectPlaneUniforms(e, t) {
     if (t.animating && e.uniforms.time && (e.uniforms.time.value += (t.speed || 1) * 60 / this.fps), this.handleStateEffects(e, t), e.uniforms.mousePos && (e.uniforms.mousePos.value.x = this.mouse.pos.x / (this.element.offsetWidth * 0.5), e.uniforms.mousePos.value.y = 1 - this.mouse.pos.y / (this.element.offsetHeight * 0.5)), e.uniforms.previousMousePos && this.mouse.trail.length > 3) {

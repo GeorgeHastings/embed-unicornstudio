@@ -5545,7 +5545,7 @@ class Gt {
     });
   }
   getPlaneParams(e, t) {
-    let s = ["noise", "noiseField", "sine", "ripple"].includes(e.type) ? 250 : 1;
+    let s = ["noise", "noiseField", "sine", "ripple", "bulge"].includes(e.type) ? 250 : 1;
     const i = {
       resolution: {
         name: "uResolution",

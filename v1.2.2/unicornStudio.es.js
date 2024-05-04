@@ -1,23 +1,23 @@
 var Ee = Object.defineProperty;
 var Ae = (n, e, t) => e in n ? Ee(n, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : n[e] = t;
 var O = (n, e, t) => (Ae(n, typeof e != "symbol" ? e + "" : e, t), t);
-let re = 0;
+let ae = 0;
 function g() {
-  if (!(re > 100)) {
-    if (re === 100)
+  if (!(ae > 100)) {
+    if (ae === 100)
       console.warn("Curtains: too many warnings thrown, stop logging.");
     else {
       const n = Array.prototype.slice.call(arguments);
       console.warn.apply(console, n);
     }
-    re++;
+    ae++;
   }
 }
 function F() {
   const n = Array.prototype.slice.call(arguments);
   console.error.apply(console, n);
 }
-function he() {
+function oe() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (n) => {
     let e = Math.random() * 16 | 0;
     return (n === "x" ? e : e & 3 | 8).toString(16).toUpperCase();
@@ -1398,13 +1398,13 @@ class ze {
 }
 const Ue = `
 precision mediump float;
-`, K = Ue.replace(/\n/g, ""), Ve = `
+`, ee = Ue.replace(/\n/g, ""), Ve = `
 attribute vec3 aVertexPosition;
 attribute vec2 aTextureCoord;
 `, we = Ve.replace(/\n/g, ""), Ne = `
 varying vec3 vVertexPosition;
 varying vec2 vTextureCoord;
-`, ee = Ne.replace(/\n/g, ""), We = K + we + ee + `
+`, te = Ne.replace(/\n/g, ""), We = ee + we + te + `
 uniform mat4 uMVMatrix;
 uniform mat4 uPMatrix;
 
@@ -1414,26 +1414,26 @@ void main() {
     
     gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
 }
-`, Be = We.replace(/\n/g, ""), He = K + ee + `
+`, Be = We.replace(/\n/g, ""), He = ee + te + `
 void main() {
     gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
 }
-`, Ge = He.replace(/\n/g, ""), je = K + we + ee + `
+`, Ge = He.replace(/\n/g, ""), je = ee + we + te + `
 void main() {
     vTextureCoord = aTextureCoord;
     vVertexPosition = aVertexPosition;
     
     gl_Position = vec4(aVertexPosition, 1.0);
 }
-`, Xe = je.replace(/\n/g, ""), Ye = K + ee + `
+`, Xe = je.replace(/\n/g, ""), Ye = ee + te + `
 uniform sampler2D uRenderTexture;
 
 void main() {
     gl_FragColor = texture2D(uRenderTexture, vTextureCoord);
 }
 `, qe = Ye.replace(/\n/g, "");
-let fe = 0;
-class pe {
+let pe = 0;
+class ge {
   constructor(e, {
     parent: t,
     vertexShader: s,
@@ -1492,7 +1492,7 @@ class pe {
    Add the program to the cache
    ***/
   createProgram() {
-    if (fe++, this.id = fe, this.program = this.gl.createProgram(), this.gl.attachShader(this.program, this.vertexShader), this.gl.attachShader(this.program, this.fragmentShader), this.gl.linkProgram(this.program), !this.renderer.production && !this.gl.getProgramParameter(this.program, this.gl.LINK_STATUS)) {
+    if (pe++, this.id = pe, this.program = this.gl.createProgram(), this.gl.attachShader(this.program, this.vertexShader), this.gl.attachShader(this.program, this.fragmentShader), this.gl.linkProgram(this.program), !this.renderer.production && !this.gl.getProgramParameter(this.program, this.gl.LINK_STATUS)) {
       g(this.type + ": Unable to initialize the shader program: " + this.gl.getProgramInfoLog(this.program)), g(this.type + ": Will use default vertex and fragment shaders"), this.vertexShader = this.createShader(this.defaultVsCode, this.gl.VERTEX_SHADER), this.fragmentShader = this.createShader(this.defaultFsCode, this.gl.FRAGMENT_SHADER), this.createProgram();
       return;
     }
@@ -1798,8 +1798,8 @@ class W {
        ***/
   composeFromOrigin(e, t, s, i) {
     let r = this.elements;
-    const a = t.elements[0], h = t.elements[1], o = t.elements[2], l = t.elements[3], d = a + a, c = h + h, u = o + o, f = a * d, m = a * c, x = a * u, b = h * c, y = h * u, p = o * u, _ = l * d, P = l * c, v = l * u, w = s.x, T = s.y, A = s.z, E = i.x, M = i.y, R = i.z, I = (1 - (b + p)) * w, V = (m + v) * w, B = (x - P) * w, H = (m - v) * T, C = (1 - (f + p)) * T, le = (y + _) * T, de = (x + P) * A, ce = (y - _) * A, ue = (1 - (f + b)) * A;
-    return r[0] = I, r[1] = V, r[2] = B, r[3] = 0, r[4] = H, r[5] = C, r[6] = le, r[7] = 0, r[8] = de, r[9] = ce, r[10] = ue, r[11] = 0, r[12] = e.x + E - (I * E + H * M + de * R), r[13] = e.y + M - (V * E + C * M + ce * R), r[14] = e.z + R - (B * E + le * M + ue * R), r[15] = 1, this;
+    const a = t.elements[0], h = t.elements[1], o = t.elements[2], l = t.elements[3], d = a + a, c = h + h, u = o + o, f = a * d, m = a * c, x = a * u, b = h * c, y = h * u, p = o * u, _ = l * d, P = l * c, v = l * u, w = s.x, T = s.y, A = s.z, E = i.x, M = i.y, R = i.z, I = (1 - (b + p)) * w, V = (m + v) * w, B = (x - P) * w, H = (m - v) * T, C = (1 - (f + p)) * T, de = (y + _) * T, ce = (x + P) * A, ue = (y - _) * A, fe = (1 - (f + b)) * A;
+    return r[0] = I, r[1] = V, r[2] = B, r[3] = 0, r[4] = H, r[5] = C, r[6] = de, r[7] = 0, r[8] = ce, r[9] = ue, r[10] = fe, r[11] = 0, r[12] = e.x + E - (I * E + H * M + ce * R), r[13] = e.y + M - (V * E + C * M + ue * R), r[14] = e.z + R - (B * E + de * M + fe * R), r[15] = 1, this;
   }
 }
 class L {
@@ -2253,7 +2253,7 @@ class S {
     return this.applyMat4(e.projectionMatrix.getInverse()).applyMat4(e.worldMatrix), this;
   }
 }
-const ae = new L(), Qe = new S(), Ze = new W();
+const ne = new L(), Qe = new S(), Ze = new W();
 class X {
   constructor(e, {
     isFBOTexture: t = !1,
@@ -2278,7 +2278,7 @@ class X {
       e.production || F(this.type + ": Unable to create a " + this.type + " because the Renderer WebGL context is not defined");
       return;
     }
-    if (this.renderer = e, this.gl = this.renderer.gl, this.uuid = he(), this._globalParameters = {
+    if (this.renderer = e, this.gl = this.renderer.gl, this.uuid = oe(), this._globalParameters = {
       // global gl context parameters
       unpackAlignment: 4,
       flipY: !t,
@@ -2573,7 +2573,7 @@ gl.LINEAR filtering will be used instead`), this.parameters.magFilter = this.gl.
         xOffset: 0,
         yOffset: 0
       };
-    const e = this._parent.scale ? ae.set(this._parent.scale.x, this._parent.scale.y) : ae.set(1, 1), t = this._parent._boundingRect.document.width * e.x, s = this._parent._boundingRect.document.height * e.y, i = this._size.width, r = this._size.height, a = i / r, h = t / s;
+    const e = this._parent.scale ? ne.set(this._parent.scale.x, this._parent.scale.y) : ne.set(1, 1), t = this._parent._boundingRect.document.width * e.x, s = this._parent._boundingRect.document.height * e.y, i = this._size.width, r = this._size.height, a = i / r, h = t / s;
     let o = 0, l = 0;
     return h > a ? l = Math.min(0, s - t * (1 / a)) : h < a && (o = Math.min(0, t - s * a)), {
       parentWidth: t,
@@ -2595,7 +2595,7 @@ gl.LINEAR filtering will be used instead`), this.parameters.magFilter = this.gl.
       this.renderer.production || g(this.type + ": Cannot set scale because the parameter passed is not of Vec2 type:", e);
       return;
     }
-    e.sanitizeNaNValuesWith(this.scale).max(ae.set(1e-3, 1e-3)), e.equals(this.scale) || (this.scale.copy(e), this.resize());
+    e.sanitizeNaNValuesWith(this.scale).max(ne.set(1e-3, 1e-3)), e.equals(this.scale) || (this.scale.copy(e), this.resize());
   }
   setOffset(e) {
     if (!e.type || e.type !== "Vec2") {
@@ -3069,14 +3069,14 @@ class et {
       height: l
       // using a special ID for shader passes to avoid weird buffer binding bugs on mac devices
       //id: this.type === "ShaderPass" ? 1 : widthSegments * heightSegments + widthSegments
-    }), this._program = new pe(this.renderer, {
+    }), this._program = new ge(this.renderer, {
       parent: this,
       vertexShader: r,
       fragmentShader: a
     }), this._program.compiled ? (this._program.createUniforms(h), this.uniforms = this._program.uniformsManager.uniforms, this._geometry.setProgram(this._program), this.renderer.onSceneChange()) : this.renderer.nextRender.add(() => this._onErrorCallback && this._onErrorCallback());
   }
   _initMesh() {
-    this.uuid = he(), this.loader = new Ke(this.renderer, this, {
+    this.uuid = oe(), this.loader = new Ke(this.renderer, this, {
       sourcesLoaded: 0,
       initSourcesToLoad: 0,
       // will change if there's any texture to load on init
@@ -3091,7 +3091,7 @@ class et {
    Used internally to handle context restoration
    ***/
   _restoreContext() {
-    this._canDraw = !1, this._matrices && (this._matrices = null), this._program = new pe(this.renderer, {
+    this._canDraw = !1, this._matrices && (this._matrices = null), this._program = new ge(this.renderer, {
       parent: this,
       vertexShader: this._program.vsCode,
       fragmentShader: this._program.fsCode
@@ -3370,7 +3370,7 @@ while loading this video:
     }
   }
 }
-const ge = new L(), tt = new L();
+const me = new L(), tt = new L();
 class st extends et {
   constructor(e, t, s = "DOMMesh", {
     // Mesh params
@@ -3456,7 +3456,7 @@ class st extends et {
        @mousePosition (Vec2 object): the mouse position relative to our plane in WebGL space coordinates
        ***/
   mouseToPlaneCoords(e) {
-    const t = this.scale ? this.scale : tt.set(1, 1), s = ge.set(
+    const t = this.scale ? this.scale : tt.set(1, 1), s = me.set(
       (this._boundingRect.document.width - this._boundingRect.document.width * t.x) / 2,
       (this._boundingRect.document.height - this._boundingRect.document.height * t.y) / 2
     ), i = {
@@ -3465,7 +3465,7 @@ class st extends et {
       top: (this._boundingRect.document.top + s.y) / this.renderer.pixelRatio,
       left: (this._boundingRect.document.left + s.x) / this.renderer.pixelRatio
     };
-    return ge.set(
+    return me.set(
       (e.x - i.left) / i.width * 2 - 1,
       1 - (e.y - i.top) / i.height * 2
     );
@@ -3644,7 +3644,7 @@ class it {
     this._shouldUpdate = !1;
   }
 }
-class te {
+class se {
   constructor(e = new Float32Array([0, 0, 0, 1]), t = "XYZ") {
     this.type = "Quat", this.elements = e, this.axisOrder = t;
   }
@@ -3703,7 +3703,7 @@ class te {
        @clonedQuaternion (Quat): cloned quaternion
        ***/
   clone() {
-    return new te().copy(this);
+    return new se().copy(this);
   }
   /***
        Checks if 2 quaternions are equal
@@ -3728,7 +3728,7 @@ class te {
     return this.axisOrder === "XYZ" ? (this.elements[0] = o * a * h + r * l * d, this.elements[1] = r * l * h - o * a * d, this.elements[2] = r * a * d + o * l * h, this.elements[3] = r * a * h - o * l * d) : this.axisOrder === "YXZ" ? (this.elements[0] = o * a * h + r * l * d, this.elements[1] = r * l * h - o * a * d, this.elements[2] = r * a * d - o * l * h, this.elements[3] = r * a * h + o * l * d) : this.axisOrder === "ZXY" ? (this.elements[0] = o * a * h - r * l * d, this.elements[1] = r * l * h + o * a * d, this.elements[2] = r * a * d + o * l * h, this.elements[3] = r * a * h - o * l * d) : this.axisOrder === "ZYX" ? (this.elements[0] = o * a * h - r * l * d, this.elements[1] = r * l * h + o * a * d, this.elements[2] = r * a * d - o * l * h, this.elements[3] = r * a * h + o * l * d) : this.axisOrder === "YZX" ? (this.elements[0] = o * a * h + r * l * d, this.elements[1] = r * l * h + o * a * d, this.elements[2] = r * a * d - o * l * h, this.elements[3] = r * a * h - o * l * d) : this.axisOrder === "XZY" && (this.elements[0] = o * a * h - r * l * d, this.elements[1] = r * l * h - o * a * d, this.elements[2] = r * a * d + o * l * h, this.elements[3] = r * a * h + o * l * d), this;
   }
 }
-const rt = new L(), at = new S(), nt = new S(), ht = new S(), ot = new S(), lt = new S(), dt = new S(), k = new S(), z = new S(), me = new te(), ct = new S(0.5, 0.5, 0), ut = new S(), ft = new S(), pt = new S(), gt = new S(), mt = new L();
+const rt = new L(), at = new S(), nt = new S(), ht = new S(), ot = new S(), lt = new S(), dt = new S(), k = new S(), z = new S(), _e = new se(), ct = new S(0.5, 0.5, 0), ut = new S(), ft = new S(), pt = new S(), gt = new S(), mt = new L();
 class ve extends st {
   constructor(e, t, {
     // Mesh params
@@ -3799,7 +3799,7 @@ class ve extends st {
    Set/reset plane's transformation values: rotation, scale, translation, transform origin
    ***/
   _initTransformValues() {
-    this.rotation = new S(), this.rotation.onChange(() => this._applyRotation()), this.quaternion = new te(), this.relativeTranslation = new S(), this.relativeTranslation.onChange(() => this._setTranslation()), this._translation = new S(), this.scale = new S(1), this.scale.onChange(() => {
+    this.rotation = new S(), this.rotation.onChange(() => this._applyRotation()), this.quaternion = new se(), this.relativeTranslation = new S(), this.relativeTranslation.onChange(() => this._setTranslation()), this._translation = new S(), this.scale = new S(1), this.scale.onChange(() => {
       this.scale.z = 1, this._applyScale();
     }), this.transformOrigin = new S(0.5, 0.5, 0), this.transformOrigin.onChange(() => {
       this._setWorldTransformOrigin(), this._updateMVMatrix = !0;
@@ -4236,7 +4236,7 @@ class ve extends st {
        @mousePosition (Vec2 object): the mouse position relative to our plane in WebGL space coordinates
        ***/
   mouseToPlaneCoords(e) {
-    if (me.setAxisOrder(this.quaternion.axisOrder), me.equals(this.quaternion) && ct.equals(this.transformOrigin))
+    if (_e.setAxisOrder(this.quaternion.axisOrder), _e.equals(this.quaternion) && ct.equals(this.transformOrigin))
       return super.mouseToPlaneCoords(e);
     {
       const t = {
@@ -4293,7 +4293,7 @@ class ve extends st {
     return e && (this._onLeaveViewCallback = e), this;
   }
 }
-class ne {
+class he {
   constructor(e, {
     shaderPass: t,
     depth: s = !1,
@@ -4329,7 +4329,7 @@ class ne {
       wrapT: this.gl.CLAMP_TO_EDGE,
       minFilter: this.gl.LINEAR,
       magFilter: this.gl.LINEAR
-    }, l), this._texturesOptions = l, this.userData = {}, this.uuid = he(), this.renderer.renderTargets.push(this), this.renderer.onSceneChange(), this._initRenderTarget();
+    }, l), this._texturesOptions = l, this.userData = {}, this.uuid = oe(), this.renderer.renderTargets.push(this), this.renderer.onSceneChange(), this._initRenderTarget();
   }
   /***
    Init our RenderTarget by setting its size, creating a textures array and then calling _createFrameBuffer()
@@ -4451,11 +4451,11 @@ class _t extends ve {
       fov: w
     }), !this.gl)
       return;
-    this.renderer.scene.removePlane(this), this.type = "PingPongPlane", this.renderer.scene.addPlane(this), this.readPass = new ne(e, {
+    this.renderer.scene.removePlane(this), this.type = "PingPongPlane", this.renderer.scene.addPlane(this), this.readPass = new he(e, {
       depth: !1,
       clear: !1,
       texturesOptions: m
-    }), this.writePass = new ne(e, {
+    }), this.writePass = new he(e, {
       depth: !1,
       clear: !1,
       texturesOptions: m
@@ -4574,7 +4574,7 @@ const bt = (n, e) => {
     i.push([+(d.x * Math.abs(Math.cos(l)) * e + i[a][0]).toFixed(1), +(d.y * Math.abs(Math.sin(l)) * e + i[a][1]).toFixed(1)]);
   }
   return i;
-}, _e = (n, e) => {
+}, xe = (n, e) => {
   const t = Math.max(1.5, e / 500 * 4);
   return Pt(
     bt(n, t),
@@ -4729,8 +4729,8 @@ const wt = (n, e, t, s, i) => {
     s = e.fill[0];
   return s;
 };
-let Z, J;
-typeof document.hidden < "u" ? (Z = "hidden", J = "visibilitychange") : typeof document.msHidden < "u" ? (Z = "msHidden", J = "msvisibilitychange") : typeof document.webkitHidden < "u" && (Z = "webkitHidden", J = "webkitvisibilitychange");
+let J, K;
+typeof document.hidden < "u" ? (J = "hidden", K = "visibilitychange") : typeof document.msHidden < "u" ? (J = "msHidden", K = "msvisibilitychange") : typeof document.webkitHidden < "u" && (J = "webkitHidden", K = "webkitvisibilitychange");
 const vt = {
   NORMAL: "Normal",
   ADD: "Add",
@@ -4768,7 +4768,7 @@ const Se = () => {
 function U(n) {
   return n && typeof n == "string" && (n = JSON.parse(n)), Object.values(n);
 }
-function xe(n, e, t) {
+function Z(n, e, t) {
   for (let s = 0; s < t; s++)
     n = (n + e) / 2;
   return +((n + e) / 2).toFixed(2);
@@ -4785,7 +4785,7 @@ function $(n, e) {
   const t = n[0] / n[1], s = Math.sqrt(t * (3e5 * (e || 1)));
   return [s, s / t];
 }
-function oe() {
+function le() {
   return /Android|iPhone/i.test(navigator.userAgent);
 }
 function j(n) {
@@ -4852,7 +4852,7 @@ function Ct() {
     document.body.contains(n.element) || (n.curtain.dispose(), D.splice(e, 1));
   });
 }
-function se() {
+function ie() {
   cancelAnimationFrame(q);
   const n = D.filter((t) => t.getAnimatingEffects().length), e = (t) => {
     const s = n.filter((i) => i.isInView);
@@ -5005,11 +5005,11 @@ class Me {
     return this.effects ? this.state().layers.filter((e) => e.visible && e.parentLayer && this.effects.includes(e.parentLayer)) : [];
   }
 }
-let ie = class extends Me {
+let re = class extends Me {
   constructor(t, s, i) {
     super(t, s);
     O(this, "isElement", !0);
-    this.initOptions = i, this.opacity = t.opacity || 1, this.displace = t.displace || 0, this.trackMouse = t.trackMouse || 0, this.axisTilt = t.axisTilt || 0, this.bgDisplace = t.bgDisplace || 0, this.dispersion = t.dispersion || 0, this.blendMode = t.blendMode || "NORMAL", this.compiledFragmentShaders = t.compiledFragmentShaders || [], this.compiledVertexShaders = t.compiledVertexShaders || [];
+    this.initOptions = i, this.opacity = t.opacity || 1, this.displace = t.displace || 0, this.trackMouse = t.trackMouse || 0, this.axisTilt = t.axisTilt || 0, this.bgDisplace = t.bgDisplace || 0, this.dispersion = t.dispersion || 0, this.mouseMomentum = t.mouseMomentum || 0, this.blendMode = t.blendMode || "NORMAL", this.compiledFragmentShaders = t.compiledFragmentShaders || [], this.compiledVertexShaders = t.compiledVertexShaders || [];
   }
   createLocalCanvas() {
     const t = this.state(), s = document.createElement("canvas"), i = +t.dpi * t.scale;
@@ -5032,7 +5032,7 @@ let ie = class extends Me {
     return { x: c, y: u, offX: l, offY: d };
   }
 };
-class Dt extends ie {
+class Dt extends re {
   constructor(t, s, i) {
     super(t, s);
     O(this, "layerType", "draw");
@@ -5066,10 +5066,10 @@ class Dt extends ie {
     };
   }
   unpackage() {
-    return this.coords = U(this.coords), this.fill = U(this.fill), this.effects = U(this.effects), this.coords.length > 3 ? this.coordsHiRes = _e(this.coords, this.size) : this.coordsHiRes = this.coords, this;
+    return this.coords = U(this.coords), this.fill = U(this.fill), this.effects = U(this.effects), this.coords.length > 3 ? this.coordsHiRes = xe(this.coords, this.size) : this.coordsHiRes = this.coords, this;
   }
   interpolatePath() {
-    this.coordsHiRes = _e(this.coords, this.size);
+    this.coordsHiRes = xe(this.coords, this.size);
   }
   render() {
     const t = this.state().getScaleFactor(this.aspectRatio);
@@ -5084,7 +5084,7 @@ class Dt extends ie {
     this.local.ctx.lineJoin = "round", this.local.ctx.lineCap = "round", this.local.ctx.strokeStyle = this.fill[0], this.local.ctx.lineWidth = this.size, this.local.ctx.stroke();
   }
 }
-class Ot extends ie {
+class Ot extends re {
   constructor(t, s, i) {
     super(t, s);
     O(this, "layerType", "shape");
@@ -5176,7 +5176,7 @@ class ye extends Me {
   constructor(t, s, i) {
     super(t, s);
     O(this, "layerType", "effect");
-    this.initOptions = i, this.type = t.type || "sine", this.speed = t.speed || 0.5, this.data = t.data || {}, this.parentLayer = t.parentLayer || !1, this.animating = t.animating || !1, this.isMask = t.isMask || 0, this.texture = t.texture || null, this.compiledFragmentShaders = t.compiledFragmentShaders || [], this.compiledVertexShaders = t.compiledVertexShaders || [], this.states = {
+    this.initOptions = i, this.type = t.type || "sine", this.speed = t.speed || 0.5, this.data = t.data || {}, this.parentLayer = t.parentLayer || !1, this.animating = t.animating || !1, this.isMask = t.isMask || 0, this.texture = t.texture || null, this.mouseMomentum = t.mouseMomentum || 0, this.compiledFragmentShaders = t.compiledFragmentShaders || [], this.compiledVertexShaders = t.compiledVertexShaders || [], this.states = {
       appear: t.states && t.states.appear ? t.states.appear.map((r) => new Lt(r)) : []
     };
     for (let r in t)
@@ -5192,7 +5192,7 @@ class ye extends Me {
     return this.state().layers.filter((t) => t.effects && t.effects.length).find((t) => t.effects.includes(this.parentLayer));
   }
 }
-class kt extends ie {
+class kt extends re {
   constructor(t, s, i) {
     super(t, s);
     O(this, "layerType", "image");
@@ -5252,7 +5252,7 @@ class kt extends ie {
   render() {
   }
 }
-class zt extends ie {
+class zt extends re {
   constructor(t, s, i, r) {
     super(t, s);
     O(this, "layerType", "text");
@@ -5369,7 +5369,7 @@ class zt extends ie {
   }
 }
 function Ut() {
-  document[Z] ? cancelAnimationFrame(q) : se();
+  document[J] ? cancelAnimationFrame(q) : ie();
 }
 function Vt() {
   D.forEach((n) => {
@@ -5385,13 +5385,13 @@ let be = window.scrollY;
 function Wt(n) {
   Nt();
   const e = D.filter((s) => s.getAnimatingEffects().length), t = D.filter((s) => s.rendering);
-  e.length && !t.length && se(), t.length && t.forEach((s) => {
+  e.length && !t.length && ie(), t.length && t.forEach((s) => {
     s.mouse.movePos.y += (window.scrollY - be) / 2;
   }), be = window.scrollY;
 }
 function Bt() {
   D.forEach((n) => {
-    n.isInView && n.curtain.planes.find((e) => e.uniforms.mousePos) && (oe() && n.interactivity && n.interactivity.mouse && n.interactivity.mouse.disableMobile || (n.mouse.pos.x = n.mouse.movePos.x, n.mouse.pos.y = n.mouse.movePos.y, n.mouse.lastPos.x = n.mouse.pos.x, n.mouse.lastPos.y = n.mouse.pos.y));
+    n.isInView && n.curtain.planes.find((e) => e.uniforms.mousePos) && (le() && n.interactivity && n.interactivity.mouse && n.interactivity.mouse.disableMobile || (n.mouse.pos.x = n.mouse.movePos.x, n.mouse.pos.y = n.mouse.movePos.y, n.mouse.lastPos.x = n.mouse.pos.x, n.mouse.lastPos.y = n.mouse.pos.y));
   });
 }
 function Pe(n) {
@@ -5460,7 +5460,7 @@ class Gt {
     return this.layers.filter((e) => j(e) && e.visible);
   }
   createCurtains() {
-    oe() && window.scroll(0, 0);
+    le() && window.scroll(0, 0);
     const e = new ke({
       container: this.element,
       premultipliedAlpha: !0,
@@ -5740,7 +5740,7 @@ class Gt {
     }
   }
   assignRenderTargetToPlane(e, t, s, i) {
-    let r = this.getTextureParams(e, t, s), a = this.getRenderTargets()[t] || new ne(this.curtain, r);
+    let r = this.getTextureParams(e, t, s), a = this.getRenderTargets()[t] || new he(this.curtain, r);
     a.userData.id = i.userData.id, i.setRenderTarget(a);
   }
   handleTextures(e, t, s) {
@@ -5777,7 +5777,20 @@ class Gt {
     });
   }
   setElementPlaneUniforms(e, t) {
-    e.uniforms.mousePos.value.x = this.mouse.pos.x / (this.element.offsetWidth * 0.5), e.uniforms.mousePos.value.y = 1 - this.mouse.pos.y / (this.element.offsetHeight * 0.5), e.uniforms.resolution.value.x = this.curtain.canvas.width, e.uniforms.resolution.value.y = this.curtain.canvas.height, e.uniforms.sampleBg && (e.renderOrder === 0 ? e.uniforms.sampleBg.value = 0 : e.uniforms.sampleBg.value = 1), !e.userData.isReady && !t.compiledFragmentShaders.length && (e.uniforms.opacity.value = t.visible ? t.opacity : 0, e.uniforms.trackMouse.value = t.trackMouse || 0, e.uniforms.displace && (e.uniforms.displace.value = t.displace, e.uniforms.bgDisplace.value = t.bgDisplace, e.uniforms.dispersion.value = t.dispersion), e.uniforms.blendMode && (e.uniforms.blendMode.value = Object.keys(vt).indexOf(t.blendMode)), e.uniforms.mask && "mask" in t && (e.uniforms.mask.value = t.mask));
+    let s = this.element.offsetWidth * 0.5, i = this.element.offsetHeight * 0.5;
+    if (e.uniforms.mousePos) {
+      let r = this.mouse.pos.x, a = this.mouse.pos.y;
+      if (t.mouseMomentum && t.local.lastMousePos) {
+        let h = t.local.lastMousePos.x * s, o = (1 - t.local.lastMousePos.y) * i;
+        r = Z(r, h, t.mouseMomentum * 2), a = Z(a, o, t.mouseMomentum * 2);
+      } else
+        t.local.lastMousePos = {
+          x: 0.5,
+          y: 0.5
+        };
+      e.uniforms.mousePos.value.x = r / s, e.uniforms.mousePos.value.y = 1 - a / i, t.local.lastMousePos.x = r / s, t.local.lastMousePos.y = 1 - a / i;
+    }
+    e.uniforms.resolution.value.x = this.curtain.canvas.width, e.uniforms.resolution.value.y = this.curtain.canvas.height, e.uniforms.sampleBg && (e.renderOrder === 0 ? e.uniforms.sampleBg.value = 0 : e.uniforms.sampleBg.value = 1), !e.userData.isReady && !t.compiledFragmentShaders.length && (e.uniforms.opacity.value = t.visible ? t.opacity : 0, e.uniforms.trackMouse.value = t.trackMouse || 0, e.uniforms.displace && (e.uniforms.displace.value = t.displace, e.uniforms.bgDisplace.value = t.bgDisplace, e.uniforms.dispersion.value = t.dispersion), e.uniforms.blendMode && (e.uniforms.blendMode.value = Object.keys(vt).indexOf(t.blendMode)), e.uniforms.mask && "mask" in t && (e.uniforms.mask.value = t.mask));
   }
   setEffectPlaneUniforms(e, t) {
     t.animating && e.uniforms.time && (e.uniforms.time.value += (t.speed || 1) * 60 / this.fps), this.handleStateEffects(e, t);
@@ -5786,7 +5799,7 @@ class Gt {
       let r = this.mouse.pos.x, a = this.mouse.pos.y;
       if (t.mouseMomentum && t.local.lastMousePos) {
         let h = t.local.lastMousePos.x * s, o = (1 - t.local.lastMousePos.y) * i;
-        r = xe(r, h, t.mouseMomentum * 2), a = xe(a, o, t.mouseMomentum * 2);
+        r = Z(r, h, t.mouseMomentum * 2), a = Z(a, o, t.mouseMomentum * 2);
       } else
         t.local.lastMousePos = {
           x: 0.5,
@@ -5836,7 +5849,7 @@ class Gt {
       e.render(), e.getPlane() && e.getPlane().textures.filter((t) => t.sourceType === "canvas").forEach((t) => {
         t.shouldUpdate = !1, t.needUpdate();
       });
-    }), this.initialized = !0, this.initializing = !1, this.rendering || (this.fullRedraw(), this.renderNFrames(2)), this.removePlanes(), this.curtain.setPixelRatio(Math.min(Math.min(this.dpi || 1.5, 2), this.dpi)), se();
+    }), this.initialized = !0, this.initializing = !1, this.rendering || (this.fullRedraw(), this.renderNFrames(2)), this.removePlanes(), this.curtain.setPixelRatio(Math.min(Math.min(this.dpi || 1.5, 2), this.dpi)), ie();
   }
   async removePlanes() {
     const e = this.getSplitOrderedItems();
@@ -5857,7 +5870,7 @@ function jt(n) {
   );
 }
 function Xt() {
-  window.addEventListener("mousemove", Pe), window.addEventListener("touchmove", Pe), window.addEventListener("scroll", Wt), window.addEventListener("routeChange", Ct), oe() || window.addEventListener("resize", Vt), document.addEventListener(J, Ut, !1);
+  window.addEventListener("mousemove", Pe), window.addEventListener("touchmove", Pe), window.addEventListener("scroll", Wt), window.addEventListener("routeChange", Ct), le() || window.addEventListener("resize", Vt), document.addEventListener(K, Ut, !1);
 }
 function Yt(n, e, t) {
   return $([n.offsetWidth, n.offsetHeight])[0] / n.offsetWidth, {
@@ -5932,7 +5945,7 @@ function es() {
           }
         } : null
       }).then((c) => {
-        i === t.length - 1 && (se(), n(D));
+        i === t.length - 1 && (ie(), n(D));
       });
     });
   });

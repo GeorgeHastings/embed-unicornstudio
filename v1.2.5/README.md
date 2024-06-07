@@ -18,7 +18,7 @@ import * as UnicornStudio from "./path/to/unicornStudio.umd.js";
 
 ### Inline
 
-Any element with `data-us-project` will get initialized by calling `UnicornStudio.init()`. If you're hosting your own exported JSON file, use `data-us-project-src` to point to its location. If you host your own JSON, remembder you'll need to update this file when you make changes to your scene in Unicorn.studio.
+Any element with `data-us-project` will get initialized by calling `UnicornStudio.init()`. If you're hosting your own exported JSON file, use `data-us-project-src` to point to its location. You do not need both `data-us-project` and `data-us-project-src`. If you host your own JSON, remembder you'll need to update this file when you make changes to your scene in Unicorn.studio.
 
 ```html
 <div
@@ -28,6 +28,8 @@ Any element with `data-us-project` will get initialized by calling `UnicornStudi
   data-us-scale="1"
   data-us-dpi="1.5"
   data-us-disableMobile="true"
+  data-us-altText="Welcome to Unicorn Studio"
+  data-us-ariaLabel="This is a canvas scene"
 ></div>
 <script>
   UnicornStudio.init()
@@ -53,7 +55,9 @@ You can add a scene dynamically during or after pageload.
     scale: 1, // rendering scale, use smaller values for performance boost (0.25-1) [optional]
     dpi: 1, // pixel ratio [optional]
     projectId: "YOUR_PROJECT_EMBED_ID", // the id string for your embed (get this from "embed" export)
-    filePath: "path/to/your/PROJECT_ID.json", // if youre hosting your own exported json code, point to it here
+    filePath: "path/to/your/PROJECT_ID.json", // if youre hosting your own exported json code, point to it here (do not use both filePath and projectId, only one is required)
+    altText: '' // optional text for SEO
+    ariaLabel: '' // optional text for the aria-label attribute on the canvas
     interactivity: {
       // [optional]
       mouse: {

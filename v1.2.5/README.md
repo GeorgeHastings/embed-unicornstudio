@@ -56,8 +56,8 @@ You can add a scene dynamically during or after pageload.
     dpi: 1, // pixel ratio [optional]
     projectId: "YOUR_PROJECT_EMBED_ID", // the id string for your embed (get this from "embed" export)
     filePath: "path/to/your/PROJECT_ID.json", // if youre hosting your own exported json code, point to it here (do not use both filePath and projectId, only one is required)
-    altText: '' // optional text for SEO
-    ariaLabel: '' // optional text for the aria-label attribute on the canvas
+    altText: "Welcome to Unicorn Studio", // optional text for SEO, going inside the <canvas> tag
+    ariaLabel: "This is a canvas scene", // optional text for the aria-label attribute on the <canvas> element
     interactivity: {
       // [optional]
       mouse: {

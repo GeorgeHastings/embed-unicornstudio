@@ -28,8 +28,8 @@ Any element with `data-us-project` will get initialized by calling `UnicornStudi
   data-us-scale="1"
   data-us-dpi="1.5"
   data-us-disableMobile="true"
-  data-us-altText="Welcome to Unicorn Studio"
-  data-us-ariaLabel="This is a canvas scene"
+  data-us-alttext="Welcome to Unicorn Studio"
+  data-us-arialabel="This is a canvas scene"
 ></div>
 <script>
   UnicornStudio.init()
@@ -58,6 +58,7 @@ You can add a scene dynamically during or after pageload.
     filePath: "path/to/your/PROJECT_ID.json", // if youre hosting your own exported json code, point to it here (do not use both filePath and projectId, only one is required)
     altText: "Welcome to Unicorn Studio", // optional text for SEO, going inside the <canvas> tag
     ariaLabel: "This is a canvas scene", // optional text for the aria-label attribute on the <canvas> element
+    production: false // when true, will hit the global edge CDN, learn more in the help docs
     interactivity: {
       // [optional]
       mouse: {

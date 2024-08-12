@@ -5,7 +5,7 @@
 Add the script tag to the `<head>` of your page
 
 ```html
-<script src="https://cdn.unicorn.studio/v1.2.6/unicornStudio.umd.js"></script>
+<script src="https://cdn.unicorn.studio/v1.2.8/unicornStudio.umd.js"></script>
 ```
 
 or import into your component

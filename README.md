@@ -24,7 +24,7 @@ Any element with `data-us-project` will get initialized by calling `UnicornStudi
 <div
   class="unicorn-embed"
   data-us-project="YOUR_PROJECT_EMBED_ID"
-  data-us-project-src="path/to/your/PROJECT_ID.json (if you're using this, do not also use data-us-project)"
+  data-us-project-src="path/to/your/PROJECT_ID.json (if you're using this, do not use data-us-project)"
   data-us-scale="1"
   data-us-dpi="1.5"
   data-us-lazyload="true"

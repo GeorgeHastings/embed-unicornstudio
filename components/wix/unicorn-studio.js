@@ -18,10 +18,11 @@ class UnicornStudioEmbed extends HTMLElement {
 
   // Ensure that the document head is available and then load the Unicorn Studio script
   loadUnicornStudioScript() {
+    let version = "1.3.1";
     return new Promise((resolve, reject) => {
       console.log("Checking if Unicorn Studio script is already present...");
       const existingScript = document.querySelector(
-        'script[src^="https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js"]'
+        `script[src^="https://cdn.unicorn.studio/v${version}/unicornStudio.umd.js"]`
       );
 
       if (existingScript) {
@@ -39,7 +40,7 @@ class UnicornStudioEmbed extends HTMLElement {
 
         const appendScriptToHead = () => {
           const script = document.createElement("script");
-          script.src = "https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js";
+          script.src = `https://cdn.unicorn.studio/v${version}/unicornStudio.umd.js`;
           script.onload = () => {
             console.log("Unicorn Studio script loaded successfully.");
             resolve();

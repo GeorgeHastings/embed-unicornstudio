@@ -2,6 +2,7 @@ class UnicornStudioEmbed extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.scene = null; // Initialize a property to store the scene reference
   }
 
   // Called when the element is added to the DOM
@@ -11,22 +12,20 @@ class UnicornStudioEmbed extends HTMLElement {
 
   // Called when the element is removed from the DOM
   disconnectedCallback() {
-    if (window.UnicornStudio) {
-      window.UnicornStudio.destroy();
+    // If we have a scene reference, destroy it to clean up
+    if (this.scene && typeof this.scene.destroy === "function") {
+      this.scene.destroy();
     }
   }
 
   // Ensure that the document head is available and then load the Unicorn Studio script
   loadUnicornStudioScript() {
-    let version = "1.3.1";
     return new Promise((resolve, reject) => {
-      console.log("Checking if Unicorn Studio script is already present...");
       const existingScript = document.querySelector(
-        `script[src^="https://cdn.unicorn.studio/v${version}/unicornStudio.umd.js"]`
+        'script[src="https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js"]'
       );
 
       if (existingScript) {
-        console.log("Unicorn Studio script already present.");
         if (window.UnicornStudio) {
           resolve();
         } else {
@@ -34,15 +33,10 @@ class UnicornStudioEmbed extends HTMLElement {
           existingScript.addEventListener("error", reject);
         }
       } else {
-        console.log(
-          "Unicorn Studio script not found, adding new script to the document..."
-        );
-
         const appendScriptToHead = () => {
           const script = document.createElement("script");
-          script.src = `https://cdn.unicorn.studio/v${version}/unicornStudio.umd.js`;
+          script.src = "https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js";
           script.onload = () => {
-            console.log("Unicorn Studio script loaded successfully.");
             resolve();
           };
           script.onerror = () => {
@@ -56,9 +50,6 @@ class UnicornStudioEmbed extends HTMLElement {
         if (document.head) {
           appendScriptToHead();
         } else {
-          console.log(
-            "Document head not available, waiting for DOM to load..."
-          );
           document.addEventListener("DOMContentLoaded", appendScriptToHead);
         }
       }
@@ -69,14 +60,10 @@ class UnicornStudioEmbed extends HTMLElement {
   initializeUnicornStudio() {
     this.loadUnicornStudioScript()
       .then(() => {
-        console.log("Attempting to initialize Unicorn Studio...");
         if (
           window.UnicornStudio &&
           typeof window.UnicornStudio.addScene === "function"
         ) {
-          console.log(
-            "Unicorn Studio is available and addScene is a function."
-          );
           const projectId =
             this.getAttribute("project-id") || "YOUR_PROJECT_EMBED_ID";
           const dpi = this.getAttribute("dpi") || 1.5;
@@ -92,12 +79,11 @@ class UnicornStudioEmbed extends HTMLElement {
           container.classList.add("unicorn-embed");
           container.style.width = "100%";
           container.style.height = "100%";
-          this.innerHTML = container;
           this.shadowRoot.appendChild(container);
 
-          // Initialize the Unicorn Studio scene with the specified options
+          // Directly pass the container element node as 'element'
           UnicornStudio.addScene({
-            element: container, // Element in which to render the scene
+            element: container, // Pass the container DOM node directly using 'element'
             projectId, // Project ID from attribute
             dpi, // DPI setting
             scale, // Scale setting
@@ -106,7 +92,7 @@ class UnicornStudioEmbed extends HTMLElement {
             ariaLabel, // Aria label for accessibility
           })
             .then((scene) => {
-              console.log("Unicorn Studio scene loaded:", scene);
+              this.scene = scene; // Store the scene reference for later cleanup
             })
             .catch((err) => {
               console.error("Error loading Unicorn Studio scene:", err);

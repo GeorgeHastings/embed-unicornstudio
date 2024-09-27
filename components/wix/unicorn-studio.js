@@ -95,11 +95,9 @@ class UnicornStudioEmbed extends HTMLElement {
           this.innerHTML = container;
           this.shadowRoot.appendChild(container);
 
-          console.log(container);
-
           // Initialize the Unicorn Studio scene with the specified options
           UnicornStudio.addScene({
-            elementId: container, // Element in which to render the scene
+            element: container, // Element in which to render the scene
             projectId, // Project ID from attribute
             dpi, // DPI setting
             scale, // Scale setting

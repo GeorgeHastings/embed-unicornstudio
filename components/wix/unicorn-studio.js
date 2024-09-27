@@ -16,14 +16,16 @@ class UnicornStudioEmbed extends HTMLElement {
     }
   }
 
-  // Load the Unicorn Studio script if it hasn't already been loaded
+  // Ensure that the document head is available and then load the Unicorn Studio script
   loadUnicornStudioScript() {
     return new Promise((resolve, reject) => {
+      console.log("Checking if Unicorn Studio script is already present...");
       const existingScript = document.querySelector(
         'script[src^="https://cdn.unicorn.studio"]'
       );
+
       if (existingScript) {
-        // If the script is present, but UnicornStudio is not ready, wait for the script to finish loading
+        console.log("Unicorn Studio script already present.");
         if (window.UnicornStudio) {
           resolve();
         } else {
@@ -31,11 +33,33 @@ class UnicornStudioEmbed extends HTMLElement {
           existingScript.addEventListener("error", reject);
         }
       } else {
-        const script = document.createElement("script");
-        script.src = "https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js";
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
+        console.log(
+          "Unicorn Studio script not found, adding new script to the document..."
+        );
+
+        const appendScriptToHead = () => {
+          const script = document.createElement("script");
+          script.src = "https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js";
+          script.onload = () => {
+            console.log("Unicorn Studio script loaded successfully.");
+            resolve();
+          };
+          script.onerror = () => {
+            console.error("Error loading Unicorn Studio script.");
+            reject();
+          };
+          document.head.appendChild(script); // Append the script to the head
+        };
+
+        // Check if the head exists or if it's not ready, wait for the document to load
+        if (document.head) {
+          appendScriptToHead();
+        } else {
+          console.log(
+            "Document head not available, waiting for DOM to load..."
+          );
+          document.addEventListener("DOMContentLoaded", appendScriptToHead);
+        }
       }
     });
   }
@@ -44,11 +68,14 @@ class UnicornStudioEmbed extends HTMLElement {
   initializeUnicornStudio() {
     this.loadUnicornStudioScript()
       .then(() => {
-        // Check if UnicornStudio is available after the script loads
+        console.log("Attempting to initialize Unicorn Studio...");
         if (
           window.UnicornStudio &&
           typeof window.UnicornStudio.addScene === "function"
         ) {
+          console.log(
+            "Unicorn Studio is available and addScene is a function."
+          );
           const projectId =
             this.getAttribute("project-id") || "YOUR_PROJECT_EMBED_ID";
           const dpi = this.getAttribute("dpi") || 1.5;

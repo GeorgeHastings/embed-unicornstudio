@@ -92,7 +92,7 @@ class UnicornStudioEmbed extends HTMLElement {
           container.classList.add("unicorn-embed");
           container.style.width = "100%";
           container.style.height = "100%";
-          this.shadowRoot.appendChild(container);
+          this.innerHTML = container;
 
           // Initialize the Unicorn Studio scene with the specified options
           UnicornStudio.addScene({

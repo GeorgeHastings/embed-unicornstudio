@@ -21,7 +21,7 @@ class UnicornStudioEmbed extends HTMLElement {
     return new Promise((resolve, reject) => {
       console.log("Checking if Unicorn Studio script is already present...");
       const existingScript = document.querySelector(
-        'script[src^="https://cdn.unicorn.studio"]'
+        'script[src^="https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js"]'
       );
 
       if (existingScript) {

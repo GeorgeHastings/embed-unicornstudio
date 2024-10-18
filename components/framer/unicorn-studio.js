@@ -21,7 +21,7 @@ export default function UnicornStudioEmbed(props) {
       );
       if (!existingScript) {
         const script = document.createElement("script");
-        script.src = "https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js";
+        script.src = "https://cdn.unicorn.studio/v1.3.2/unicornStudio.umd.js";
         script.onload = callback;
         document.head.appendChild(script);
       } else {

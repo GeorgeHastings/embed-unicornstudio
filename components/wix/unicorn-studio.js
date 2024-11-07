@@ -22,7 +22,7 @@ class UnicornStudioEmbed extends HTMLElement {
   loadUnicornStudioScript() {
     return new Promise((resolve, reject) => {
       const existingScript = document.querySelector(
-        'script[src="https://cdn.unicorn.studio/v1.3.2/unicornStudio.umd.js"]'
+        'script[src="https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js"]'
       );
 
       if (existingScript) {
@@ -35,7 +35,7 @@ class UnicornStudioEmbed extends HTMLElement {
       } else {
         const appendScriptToHead = () => {
           const script = document.createElement("script");
-          script.src = "https://cdn.unicorn.studio/v1.3.2/unicornStudio.umd.js";
+          script.src = "https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js";
           script.onload = () => {
             resolve();
           };

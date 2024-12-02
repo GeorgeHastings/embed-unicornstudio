@@ -38,6 +38,8 @@ export default function UnicornScene({
     if (typeof window === 'undefined') return;
 
     const initializeScript = (callback: () => void) => {
+      const version = '1.3.2';
+
       const existingScript = document.querySelector(
         'script[src^="https://cdn.unicorn.studio"]'
       );
@@ -49,7 +51,7 @@ export default function UnicornScene({
       }
 
       const script = document.createElement('script');
-      script.src = 'https://cdn.unicorn.studio/v1.3.2/unicornStudio.umd.js';
+      script.src = `https://cdn.unicorn.studio/v${version}/unicornStudio.umd.js`;
       script.async = true;
 
       script.onload = () => {

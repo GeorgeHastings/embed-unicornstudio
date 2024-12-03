@@ -32,7 +32,7 @@ export default function UnicornScene({
   const elementRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<any>(null);
   const [error, setError] = useState<string | null>(null);
-  const [setScriptLoaded] = useState(false);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -45,8 +45,11 @@ export default function UnicornScene({
       );
 
       if (existingScript) {
-        setScriptLoaded(true);
-        callback();
+        if (scriptLoaded) {
+          callback();
+        } else {
+          existingScript.addEventListener('load', callback);
+        }
         return;
       }
 
@@ -118,8 +121,8 @@ export default function UnicornScene({
       data-us-dpi={dpi}
       data-us-scale={scale}
       data-us-fps={fps}
-      data-us-altText={altText}
-      data-us-ariaLabel={ariaLabel}
+      data-us-alttext={altText}
+      data-us-arialabel={ariaLabel}
       data-us-lazyload={lazyLoad ? "true" : ""}
     >
       {error && <div className="text-red-500">{error}</div>}

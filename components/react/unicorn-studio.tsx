@@ -38,7 +38,7 @@ export default function UnicornScene({
     if (typeof window === 'undefined') return;
 
     const initializeScript = (callback: () => void) => {
-      const version = '1.3.2';
+      const version = '1.4.0';
 
       const existingScript = document.querySelector(
         'script[src^="https://cdn.unicorn.studio"]'

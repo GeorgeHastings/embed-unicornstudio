@@ -28,7 +28,7 @@ Any element with `data-us-project` will get initialized by calling `UnicornStudi
   data-us-scale="1"
   data-us-dpi="1.5"
   data-us-lazyload="true"
-  data-us-disableMobile="true"
+  data-us-disablemobile="true"
   data-us-alttext="Welcome to Unicorn Studio"
   data-us-arialabel="This is a canvas scene"
 ></div>
@@ -64,7 +64,7 @@ You can add a scene dynamically during or after pageload.
     interactivity: {
       // [optional]
       mouse: {
-        disableMobile: true, // disable touch movement on mobile
+        disableMobile: true, // disable touch / scroll movement on mobile
       },
     },
   })

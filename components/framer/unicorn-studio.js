@@ -30,7 +30,7 @@ export default function UnicornStudioEmbed(props) {
             if (!existingScript) {
                 const script = document.createElement("script")
                 script.src =
-                    "https://cdn.unicorn.studio/v1.3.2/unicornStudio.umd_test.js"
+                    "https://cdn.unicorn.studio/v1.4.1/unicornStudio.umd_test.js"
                 script.onload = callback
                 document.head.appendChild(script)
             } else {
